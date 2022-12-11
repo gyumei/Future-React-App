@@ -1,0 +1,33 @@
+<select type="number" name="day" id="date" value="1" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="1">13</option>
+                <option value="2">14</option>
+                <option value="3">15</option>
+                <option value="4">16</option>
+                <option value="5">17</option>
+                <option value="6">18</option>
+                <option value="7">19</option>
+                <option value="8">20</option>
+                <option value="9">21</option>
+                <option value="10">22</option>
+                <option value="11">23</option>
+                <option value="12">24</option>
+                <option value="1">25</option>
+                <option value="2">26</option>
+                <option value="3">27</option>
+                <option value="4">28</option>
+                <option value="5">29</option>
+                <option value="6">30</option>
+                <option value="7">31</option>
+    </select>
