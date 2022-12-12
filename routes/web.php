@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,21 +14,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/future', \App\Http\Controllers\Future\IndexController::class)->name('future.index');
-Route::get('/', function () {return view('welcome');});
-Route::get('/dashboard', function(){return view('dashboard');})->middleware(['auth'])->name('dashboard');
-Route::middleware('auth')->group(function (){
-Route::get('/future/mypage/{id}', [\App\Http\Controllers\Future\IndexController::class, 'mypage'])->name('future.mypage');
-Route::get('/future/otherpage/{id}', [\App\Http\Controllers\Future\IndexController::class, 'otherpage'])->name('future.otherpage');
-Route::get('/future/ownpage/{id}', [\App\Http\Controllers\Future\IndexController::class, 'ownpage'])->name('future.index.ownpage');
-Route::get('/register0',[\App\Http\Controllers\Future\IndexController::class, 'register']) ->name('future.register');
-Route::post('/future/search', \App\Http\Controllers\Future\SearchController::class)->name('future.search');
-Route::post('/future/create', \App\Http\Controllers\Future\CreateController::class)->name('future.create');
-Route::get('/dashboard', function () {return view('dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/future/follow/{id}', [\App\Http\Controllers\Future\IndexController::class, 'follow'])->name('future.follow');
-Route::get('/future/following/display', [\App\Http\Controllers\Future\IndexController::class, 'following_display'])->name('future.followdisplay');
-Route::get('/future/followed/display', [\App\Http\Controllers\Future\IndexController::class, 'followed_display'])->name('future.followeddisplay');
-Route::get('/future/setting/{id}', [\App\Http\Controllers\Future\IndexController::class, 'setting'])->name('future.setting');
-Route::post('/future/settingregister/{id}', \App\Http\Controllers\Future\SettingController::class)->name('future.settingregister');
+Route::get('/', function () {
+    return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/future/mypage/{id}', [\App\Http\Controllers\Future\IndexController::class, 'mypage'])->name('future.mypage');
+    Route::get('/future/otherpage/{id}', [\App\Http\Controllers\Future\IndexController::class, 'otherpage'])->name('future.otherpage');
+    Route::get('/future/ownpage/{id}', [\App\Http\Controllers\Future\IndexController::class, 'ownpage'])->name('future.index.ownpage');
+    Route::get('/register0',[\App\Http\Controllers\Future\IndexController::class, 'register']) ->name('future.register');
+    Route::post('/future/search', \App\Http\Controllers\Future\SearchController::class)->name('future.search');
+    Route::post('/future/create', \App\Http\Controllers\Future\CreateController::class)->name('future.create');
+    Route::get('/dashboard', function () {return view('dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
+    Route::get('/future/follow/{id}', [\App\Http\Controllers\Future\IndexController::class, 'follow'])->name('future.follow');
+    Route::get('/future/following/display', [\App\Http\Controllers\Future\IndexController::class, 'following_display'])->name('future.followdisplay');
+    Route::get('/future/followed/display', [\App\Http\Controllers\Future\IndexController::class, 'followed_display'])->name('future.followeddisplay');
+    Route::get('/future/setting/{id}', [\App\Http\Controllers\Future\IndexController::class, 'setting'])->name('future.setting');
+    Route::post('/future/settingregister/{id}', \App\Http\Controllers\Future\SettingController::class)->name('future.settingregister');
+
+});
+
 require __DIR__.'/auth.php';
