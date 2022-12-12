@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('follows', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('follow')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('followed')->constrained('users')->cascadeOnDelete();
+        Schema::create('future_images', function (Blueprint $table) {
+            $table->foreignId('future_id')->constrained('futures')->cascadeOnDelete();
+            $table->foreignId('image_id')->constrained('images')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('follows');
+        Schema::dropIfExists('future_images');
     }
 };

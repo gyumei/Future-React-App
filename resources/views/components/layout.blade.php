@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
 <title>タイムカプセル</title>
-<script src="{{ mix('/js/app.js') }}"></script>
 <meta name="description" charset=”UTF-8” content="思い出を未来に残します">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <div class="flex justify-center" id="first_header">

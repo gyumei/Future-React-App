@@ -9,6 +9,7 @@ use App\Models\Profile;
 use App\Models\Follow;
 use Illuminate\Http\Request;
 use App\Services\FutureService;
+use App\Http\Requests\Future\CreateRequest;
 
 class IndexController extends Controller
 {
@@ -64,24 +65,28 @@ class IndexController extends Controller
         return view('future.otherpage')->with('otherpage', $other_record);
     }
 
+   //フォローしてる人のデータ一覧の返却
     public function following_display()
     {
         $id = auth()->id();
         $follows = Follow::where('follow', '=', $id)->get();
+        $following = [];
         foreach ($follows as $follow){
-        $following[] = User::where('id', '=', $follow->followed)->first();
+        $following = User::where('id', '=', $follow->followed)->first();
         }
         return view('future.follow_display')->with('follows', $following);
     }
 
+    //フォローしてくれてる人のデータを一覧の返却
     public function followed_display()
     {
         $id = auth()->id();
         $follows = Follow::where('followed', '=', $id)->get();
+        $followed = [];
         foreach ($follows as $follow){
-        $following[] = User::where('id', '=', $follow->follow)->first();
+        $followed = User::where('id', '=', $follow->follow)->first();
         }
-        return view('future.followed_display')->with('follows', $following);
+        return view('future.followed_display')->with('follows', $followed);
     }
 
     public function setting($id)

@@ -14,13 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/future', \App\Http\Controllers\Future\IndexController::class)->name('future.index');
+Route::get('/', function () {return view('welcome');});
+Route::get('/dashboard', function(){return view('dashboard');})->middleware(['auth'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -38,7 +34,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/future/followed/display', [\App\Http\Controllers\Future\IndexController::class, 'followed_display'])->name('future.followeddisplay');
     Route::get('/future/setting/{id}', [\App\Http\Controllers\Future\IndexController::class, 'setting'])->name('future.setting');
     Route::post('/future/settingregister/{id}', \App\Http\Controllers\Future\SettingController::class)->name('future.settingregister');
-
 });
 
 require __DIR__.'/auth.php';
