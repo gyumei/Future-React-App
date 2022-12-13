@@ -74,7 +74,9 @@ class IndexController extends Controller
     {
         $me = auth()->id();
         $follows = Follow::where('follow', '=', $me)->get();
+        //データを一つ取り出してそのデータが存在しているかどうかのチェック
         $follows_one = Follow::where('follow', '=', $me)->first();
+        //データが存在していなければそのまま遷移
         if($follows_one === null){
         $following = null;
         return view('future.follow_display')->with('follows', $following);
@@ -91,7 +93,9 @@ class IndexController extends Controller
     {
         $me = auth()->id();
         $follows = Follow::where('followed', '=', $me)->get();
+        //データを一つ取り出してそのデータが存在しているかどうかのチェック
         $follows_one = Follow::where('follow', '=', $me)->first();
+        //データが存在していなければそのまま遷移
         if($follows_one === null){
         $followed = null;
         return view('future.followed_display')->with('follows', $followed);

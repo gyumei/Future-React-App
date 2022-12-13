@@ -32,9 +32,8 @@
     padding: 0.5em 0.5em 0.4em;
     text-align: center;
     font-size: 1.3em;/*タイトル文字サイズ*/
-    background: #ff9b38;/*タイトル文字背景色*/
+    background: #FFCC33	;/*タイトル文字背景色*/
     border-bottom: 3px solid #ff7f00;/*タイトル下線*/
-    color: #ffffff;/*タイトル文字色*/
     font-weight: bold;
     letter-spacing: 0.05em;
     width: 23%;
@@ -51,7 +50,8 @@
 }
 .box5 {
     display:flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
+	flex-wrap: wrap;
     gap:10px;
     padding: 0.5em 1em;
     margin: 2em 0;

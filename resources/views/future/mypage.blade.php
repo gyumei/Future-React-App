@@ -4,6 +4,8 @@
 
 <a href="{{ route('future.setting',['id' => $me]) }}">プロフィールを設定する</a>
 
+<a href="{{ route('future.settingregister.put', ['id' => $me]) }}">編集する</a>
+
 <br>
 
 @foreach($profiles as $profile)
@@ -16,7 +18,6 @@
 <div class="back">
 <a href="{{ route('future.index') }}">戻る</a>
 </div>
-
 
 <style>
 .sample_box5 {
