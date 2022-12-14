@@ -19,4 +19,5 @@ class Future extends Model
         return $this->belongsToMany(Image::class, 'future_images')
         ->using(FutureImage::class);
     }
+
 }

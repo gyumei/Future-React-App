@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Future;
+use App\Models\User;
 use Carbon\Carbon;
 use App\Models\Image;
 use Illuminate\Support\Facades\DB;
@@ -12,7 +13,9 @@ class FutureService
 {
     public function getFutures()
     {
-        return Future::with('images')->orderBy('created_at', 'DESC')->get();
+        $me = auth()->id();
+        $limit_count = 4;
+        return Future::with('images')->orderBy('created_at', 'DESC')->where('user_id', '=', $me)->paginate($limit_count);
     }
 
     public function getYear()

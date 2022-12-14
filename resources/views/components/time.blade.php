@@ -1,4 +1,7 @@
 @auth
+    <div class='paginate'>
+            {{ $futures->links() }}
+    </div>
     <div class="box5">
     @foreach($futures as $future)
 
@@ -50,8 +53,9 @@
 }
 .box5 {
     display:flex;
+    flex-wrap:wrap;
+    float:left;
     justify-content: space-between;
-	flex-wrap: wrap;
     gap:10px;
     padding: 0.5em 1em;
     margin: 2em 0;
