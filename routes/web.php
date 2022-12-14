@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/future/create', \App\Http\Controllers\Future\CreateController::class)->name('future.create');
     Route::get('/dashboard', function () {return view('dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
     Route::get('/future/follow/{id}', [\App\Http\Controllers\Future\IndexController::class, 'follow'])->name('future.follow');
+    Route::get('/future/follow_delete/{id}', [\App\Http\Controllers\Future\IndexController::class, 'follow_delete'])->name('future.follow_delete');
     Route::get('/future/following/display', [\App\Http\Controllers\Future\IndexController::class, 'following_display'])->name('future.followdisplay');
     Route::get('/future/followed/display', [\App\Http\Controllers\Future\IndexController::class, 'followed_display'])->name('future.followeddisplay');
     Route::get('/future/setting/{id}', [\App\Http\Controllers\Future\IndexController::class, 'setting'])->name('future.setting');

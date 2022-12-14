@@ -2,9 +2,11 @@
 <h1>マイページです</h1>
 <p>ようこそ!!<br>{{ $mypage->name }}さん</p>
 
+@if(is_null($profiles))
 <a href="{{ route('future.setting',['id' => $me]) }}">プロフィールを設定する</a>
-
+@else
 <a href="{{ route('future.settingregister.put', ['id' => $me]) }}">編集する</a>
+@endif
 
 <br>
 

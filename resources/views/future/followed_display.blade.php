@@ -1,10 +1,12 @@
+
+<p>あなたのフォロワー一覧です</p>
 @if($follows === null)
 <p>あなたをフォローしている人はいません</p>
 
 @else
 
 @foreach($follows as $follow)
-        <p>{{ $follow->name }}</p>
+         <a href="{{route ('future.otherpage', ['id' => $follow->id])}}">{{ $follow->name }}</a>
 @endforeach
 
 @endif

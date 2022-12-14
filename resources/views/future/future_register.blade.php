@@ -25,12 +25,10 @@
         <div class="file">
             <button id="add">Add!</button>
             <div id="target">
-                <div>
-                    <input type="file" name="images[]" accept="image/*, video/*" required>
-                </div>
+                <input type="file" name="images[]" accept="image/gif,image/jpeg,image/png,video/mp4" required>
             </div>
         </div>
-
+        
         <button class="button" type="submit">提出</button>
     </form>
 

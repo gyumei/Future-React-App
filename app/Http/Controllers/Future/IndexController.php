@@ -68,6 +68,18 @@ class IndexController extends Controller
         $confirmation = Follow::where('followed', '=', $other)->where('follow', '=', $me)->first();
         return view('future.otherpage')->with('otherpage', $other_record)->with('confirmation', $confirmation);
     }
+    
+    //フォロー解除します。
+    public function follow_delete($id)
+    {
+        $other = $id;
+        $me = auth()->id();
+        $follow = Follow::where('followed', '=', $other)->where('follow', '=', $me)->first();
+        $follow->delete();
+        $other_record = User::where('id', '=', $other)->first();
+        $follow_new = Follow::where('followed', '=', $other)->where('follow', '=', $me)->first();
+        return view('future.otherpage')->with('otherpage', $other_record)->with('confirmation', $follow_new);
+    }
 
    //フォローしてる人のデータ一覧の返却
     public function following_display()
@@ -77,7 +89,7 @@ class IndexController extends Controller
         //データを一つ取り出してそのデータが存在しているかどうかのチェック
         $follows_one = Follow::where('follow', '=', $me)->first();
         //データが存在していなければそのまま遷移
-        if($follows_one === null){
+        if(is_null($follows_one)){
         $following = null;
         return view('future.follow_display')->with('follows', $following);
         }else{
@@ -96,7 +108,7 @@ class IndexController extends Controller
         //データを一つ取り出してそのデータが存在しているかどうかのチェック
         $follows_one = Follow::where('follow', '=', $me)->first();
         //データが存在していなければそのまま遷移
-        if($follows_one === null){
+        if(is_null($follows_one)){
         $followed = null;
         return view('future.followed_display')->with('follows', $followed);
         }
