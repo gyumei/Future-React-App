@@ -12,22 +12,22 @@ use Illuminate\Support\Facades\Storage;
 
 class CreateController extends Controller
 {
-    public function __invoke(CreateRequest $request)
+    public function __invoke(Request $request)
     {
         $future = new Future;
         $future->user_id = $request->user()->id;
         $future->content = $request->input('future');
-        $future->year = $request->year;
-        $future->month = $request->month;
-        $future->day = $request->day;
+        $future->year = $request->input('year');
+        $future->month = $request->input('month');
+        $future->day = $request->input('day');
         $future->save();
         
         $dir = 'sample';
-        $images = $request->file('images', []);
+        $images = $request->file('images');
         foreach ($images as $image){
             $file_name = $image->getClientOriginalName();
             // 取得したファイル名で保存
-            Storage::putFileAs('public/sample', $image, $file_name);
+            Storage::putFile('public/sample', $image);
             // ファイル情報をDBに保存
             $image = new Image();
             $image->name = $file_name;

@@ -51,7 +51,8 @@ class IndexController extends Controller
         $me = auth()->id();
         $otherpage = User::where('id', '=', $other)->first();
         $confirmation = Follow::where('followed', '=', $other)->where('follow', '=', $me)->first();
-        return view('future.otherpage')->with('otherpage', $otherpage)->with('confirmation', $confirmation);
+        $profile = Profile::where('profiles_id', '=', $other)->first();
+        return view('future.otherpage')->with('otherpage', $otherpage)->with('confirmation', $confirmation)->with('profile', $profile);
     }
 
     public function follow($id)

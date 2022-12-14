@@ -54,7 +54,7 @@ class CreateRequest extends FormRequest
             'month'=>'required|max:12',
             'day'=>'required|max:31',
             'images' => 'array|max:4',
-            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|video|mp4|max:2048'
         ];
     }
 }

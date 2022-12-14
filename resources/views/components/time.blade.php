@@ -1,7 +1,4 @@
 @auth
-    <div class='paginate'>
-            {{ $futures->links() }}
-    </div>
     <div class="box5">
     @foreach($futures as $future)
 
@@ -26,10 +23,18 @@
     @endif
 
     @endforeach
+    <div class='paginate'>
+            {{ $futures->links() }}
+    </div>
     </div>
 @endauth
 
 <style>
+.paginate{
+    text-align:center;
+    display:inline;
+    writing-mode: horizontal-tb;
+}
     .sample_box_title { 
     margin:0 auto;
     padding: 0.5em 0.5em 0.4em;
