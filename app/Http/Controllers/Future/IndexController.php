@@ -106,7 +106,7 @@ class IndexController extends Controller
         $me = auth()->id();
         $follows = Follow::where('followed', '=', $me)->get();
         //データを一つ取り出してそのデータが存在しているかどうかのチェック
-        $follows_one = Follow::where('follow', '=', $me)->first();
+        $follows_one = Follow::where('followed', '=', $me)->first();
         //データが存在していなければそのまま遷移
         if(is_null($follows_one)){
         $followed = null;
