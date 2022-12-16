@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/future/settingregister/{id}', \App\Http\Controllers\Future\Update\IndexController::class)->name('future.settingregister')->where('id', '[0-9]+');
     Route::get('/future/settingregister/put/{id}', \App\Http\Controllers\Future\Update\IndexController::class)->name('future.settingregister.put');
     Route::put('/future/settingregister/update/{id}', \App\Http\Controllers\Future\Update\PutController::class)->name('future.settingregister.update')->where('id', '[0-9]+');
+    Route::get('/future/share/', [\App\Http\Controllers\Future\IndexController::class, 'share'])->name('future.share');
 });
 
 require __DIR__.'/auth.php';

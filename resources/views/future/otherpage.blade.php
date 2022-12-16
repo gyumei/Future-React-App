@@ -9,7 +9,10 @@
 }
 @endif
 
-@if(is_null( $profile))
+@if(is_null($profile))
+<div>
+    <p>自己紹介文はありませんでした</p>
+</div>
 @else
 <div>
     <p>自己紹介文</p>

@@ -13,7 +13,7 @@
         <li class="header01-item"><a href="{{ route('future.followeddisplay') }}"><div class="header02">フォロワー</div></a></li>
         <li class="header01-item"><a href="{{ route('future.followdisplay') }}"><div class="header03">フォロー中</div></a></li>
         <li class="header01-item"><a href="{{ route('future.mypage',['id' => $me]) }}"><div class="header04">マイページ</div></a></li>
-        <li class="header01-item"><a href="#"><div class="header06">共有</div></a></li>
+        <li class="header01-item"><a href="{{ route('future.share') }}"><div class="header06">共有</div></a></li>
         <li class="header01-item"><a href=""><div class="header05">
             <form method="post" action="{{ route('logout') }}">
                 @csrf

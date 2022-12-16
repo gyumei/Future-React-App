@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Future;
 
 use App\Models\Image;
 use App\Models\Future;
+use App\Models\Share;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Future\CreateRequest;
@@ -22,6 +23,19 @@ class CreateController extends Controller
         $future->day = $request->input('day');
         $future->save();
         
+        $sharings = $_POST['select_user'];
+        if(is_null($sharings)){
+        }
+        else{
+        foreach ($sharings as $key => $value){
+            $share = new Share;
+            $share->future_id = $future->id;
+            $share->share_user = auth()->id();
+            $share->shared_user = $key;
+            $share->save();
+        }
+        }
+
         $dir = 'sample';
         $images = $request->file('images');
         foreach ($images as $image){

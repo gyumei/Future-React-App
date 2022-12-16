@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
     <div class="box8">
-<title>タイムカプセル</title>
-@auth
-<h1>投稿場所</h1>
+    <title>タイムカプセル</title>
+    @auth
+    <h1>投稿場所</h1>
+
 
     <p>投稿フォーム</p>
     <form action="{{ route('future.create') }}" method="post" enctype="multipart/form-data">
@@ -21,23 +22,41 @@
             <span>言葉を未来に</span><br>
             <textarea id="future-content" type="text" name="future" placeholder="テキストを入力"></textarea>
         </div>
+        
+        @if(is_null($follow_users))
+        @else
+        <table border="1" class="table">
 
+        <tr>
+            <th>チェックボックス</th>
+            <th>id</th>
+            <th>name</th>
+        </tr>
+        @foreach ($follow_users as $follow_user)
+        <tr>
+            <td><input type="checkbox" name="select_user[{{ $follow_user->id }}]"></td>
+            <td>{{ $follow_user->id }}</td>
+            <td>{{ $follow_user->name }}</td>
+        </tr>
+        @endforeach
+        </table>
+        @endif
+        
         <div class="file">
             <button id="add">Add!</button>
             <div id="target">
                 <input type="file" name="images[]" accept="image/gif,image/jpeg,image/png,video/mp4" required>
             </div>
         </div>
-        
-        <button class="button" type="submit">提出</button>
+        <button type="submit" class="button btn btn-warning">提出</button>
     </form>
 
 
-@endauth
-</div>
-<div class="back">
-    <a href="{{ route('future.index') }}">戻る</a>
-</div>
+    @endauth
+    </div>
+    <div class="back">
+        <a href="{{ route('future.index') }}">戻る</a>
+    </div>
 </html>
 
 <style>
@@ -67,6 +86,9 @@
     text-align:center;
     height: 900px;
 
+}
+.table{
+    margin-left:45%;
 }
 </style>
 

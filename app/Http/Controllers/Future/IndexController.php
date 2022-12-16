@@ -7,6 +7,7 @@ use App\Models\Future;
 use App\Models\User;
 use App\Models\Profile;
 use App\Models\Follow;
+use App\Models\Share;
 use Illuminate\Http\Request;
 use App\Services\FutureService;
 use App\Http\Requests\Future\CreateRequest;
@@ -67,7 +68,8 @@ class IndexController extends Controller
         $follow->follow = auth()->id();
         $follow->save();
         $confirmation = Follow::where('followed', '=', $other)->where('follow', '=', $me)->first();
-        return view('future.otherpage')->with('otherpage', $other_record)->with('confirmation', $confirmation);
+        $profile = Profile::where('profiles_id', '=', $other)->first();
+        return view('future.otherpage')->with('otherpage', $other_record)->with('confirmation', $confirmation)->with('profile', $profile);
     }
     
     //フォロー解除します。
@@ -79,7 +81,8 @@ class IndexController extends Controller
         $follow->delete();
         $other_record = User::where('id', '=', $other)->first();
         $follow_new = Follow::where('followed', '=', $other)->where('follow', '=', $me)->first();
-        return view('future.otherpage')->with('otherpage', $other_record)->with('confirmation', $follow_new);
+        $profile = Profile::where('profiles_id', '=', $other)->first();
+        return view('future.otherpage')->with('otherpage', $other_record)->with('confirmation', $follow_new)->with('profile', $profile);
     }
 
    //フォローしてる人のデータ一覧の返却
@@ -131,6 +134,31 @@ class IndexController extends Controller
     public function register()
     {
         $me = auth()->id();
-        return view('future.future_register')->with('me', $me);
+        $followers = Follow::where('follow', '=', $me)->get();
+        $followers_one = Follow::where('follow', '=', $me)->first();
+        if(is_null($followers_one)){
+            $follow_users = null;
+            return view('future.future_register')->with('me', $me)->with('follow_users', $follow_users);
+        }
+        else{
+        foreach ($followers as $follower){
+        $follow_users[] = User::where('id', '=', $follower->followed)->first();
+            }
+        }
+        return view('future.future_register')->with('me', $me)->with('follow_users', $follow_users);
+    }
+ 
+    public function share()
+    {
+        $me = auth()->id();
+        $limit_count = 4;
+        $year = date('Y');
+        $month = date('n');
+        $day = date('j');
+        $sharings_to_me = Share::where('shared_user', '=', $me)->get();
+        foreach($sharings_to_me as $sharing_to_me){
+        $futures = Future::with('images')->orderBy('created_at', 'DESC')->where('id', '=', $sharing_to_me->future_id)->paginate($limit_count);
+        }
+        return view('future.share')->with('futures', $futures)->with('year', $year)->with('month', $month)->with('day', $day);
     }
 }
