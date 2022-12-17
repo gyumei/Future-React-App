@@ -43,7 +43,14 @@ class IndexController extends Controller
         $me = $id;
         $mypage = User::where('id', '=', $me)->first();
         $profiles = Profile::where('profiles_id', '=', $me)->get();
-        return view('future.mypage')->with('me', $me)->with('mypage', $mypage)->with('profiles', $profiles);
+        $profiles_one = Profile::where('profiles_id', '=', $me)->first();
+        if(is_null($profiles_one)){
+            $profiles = null;
+            return view('future.mypage')->with('me', $me)->with('mypage', $mypage)->with('profiles', $profiles);
+        }
+        else{
+            return view('future.mypage')->with('me', $me)->with('mypage', $mypage)->with('profiles', $profiles);
+        }
     }
 
     public function otherpage($id)
@@ -147,7 +154,7 @@ class IndexController extends Controller
         }
         return view('future.future_register')->with('me', $me)->with('follow_users', $follow_users);
     }
- 
+    //誰に共有したかをデータベースに登録します。
     public function share()
     {
         $me = auth()->id();
@@ -156,9 +163,15 @@ class IndexController extends Controller
         $month = date('n');
         $day = date('j');
         $sharings_to_me = Share::where('shared_user', '=', $me)->get();
+        $sharings_to_me_one = Share::where('shared_user', '=', $me)->first();
+        if(is_null($sharings_to_me_one)){
+            return view('future.share');
+        }
+        else{
         foreach($sharings_to_me as $sharing_to_me){
-        $futures = Future::with('images')->orderBy('created_at', 'DESC')->where('id', '=', $sharing_to_me->future_id)->paginate($limit_count);
+        $futures[] = Future::with('images')->orderBy('created_at', 'DESC')->where('id', '=', $sharing_to_me->future_id)->first();
         }
         return view('future.share')->with('futures', $futures)->with('year', $year)->with('month', $month)->with('day', $day);
+        }
     }
 }
