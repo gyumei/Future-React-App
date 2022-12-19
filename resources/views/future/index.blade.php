@@ -1,13 +1,38 @@
-<x-layout title="タイムカプセル" :me="$me">
-<div class="title">あなたの思いを未来へ</div>
-    
-<x-message></x-message>
-<x-photo></x-photo>
-<x-search></x-search>
+<x-layout title="Time Capsule" :me="$me">
+<div class="title">memories to the future
+<div class="form">
+<form action="{{ route('future.search') }}" method="post">
+    @csrf
+    <label for="search">ユーザ検索</label>
+    <input type="text" id="name" name="search" class="hoge">
+    <button class="mt-2 text-sm text-gray-500 hover:text-gray-800" type="submit">検索</button>
+</form>
+</div>
+</div>
+
+<!--==============レイアウトを制御する独自のCSSを読み込み===============-->
+<link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+<link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-6/css/6-1-6.css">
+
+<ul class="slider">
+  <li><img src="storage/sample/photosvn hafkvjamfvnkja.jpg" alt=""></li>
+  <li><img src="storage/sample/sunsetfkjnvafjknva.jpg" alt=""></li>
+  <li><img src="storage/sample/living-kjanvjak89j98n.jpg" alt=""></li>
+  <li><img src="storage/sample/sunset-vnakjvn893.jpg" alt=""></li>
+  <li><img src="storage/sample/walk-jvn82fh8r7yyhbyvh.jpg" alt=""></li>
+  <li><img src="storage/sample/hd-havnakvvv738.jpg" alt=""></li>
+<!--/slider--></ul>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-6/js/6-1-6.js"></script>
+
+
+<div class="content">
 <x-time :futures="$futures" :year="$year" :month="$month" :day="$day"></x-time>
-
+</div>
 </x-layout>
-
 <style>
 @charset "utf-8";
 
@@ -15,6 +40,7 @@
 スライダーのためのcss
 ===================================*/
 .slider {/*横幅94%で左右に余白を持たせて中央寄せ*/
+  padding-top:30px;
    width:94%;
     margin:0 auto;
 }
@@ -84,17 +110,18 @@
 
 /*========= レイアウトのためのCSS ===============*/
 .form{
-    position: absolute;
-    top: 1170px;
-    right: 30px;
+    font-size: 30px;
+    font-weight: normal;
 }
 
 .title{
     text-align:center;
-    padding:200px 0;
+    padding:250px 0px 350px 0px;
     font-weight: bold;
-    font-size: 50px;
+    font-size: 100px;
     background: #fff2e4;/*背景色*/
+    height:650px;
+    font-family:Comic Sans MS;
 }
 
 .hoge{
@@ -102,11 +129,16 @@ border:0;
 padding:10px;
 font-size:1.3em;
 font-family:Arial, sans-serif;
-color:#aaa;
 border:solid 1px #ccc;
 margin:0 0 20px;
 width:300px;
 }
+
+.content{
+    background-color:#fff2e4;
+    height:350px;
+}
+
 </style>
 
 <script>

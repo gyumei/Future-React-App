@@ -1,9 +1,11 @@
-
+<!DOCTYPE html>
+<html lang="ja">
+<body>
 @if($follows === null)
-<div class="fashionable-box1">
-  <p>あなたをフォローしている人はいません</p>
+<div class="box8">
+  <div class="text_box">あなたをフォローしている人はいません。</div>
+  <x-delete></x-delete>
 </div>
-
 @else
 
 <div class="title-box3">
@@ -11,15 +13,32 @@
 @foreach($follows as $follow)
   <p><a href="{{route ('future.otherpage', ['id' => $follow->id])}}">{{ $follow->name }}</a></p>
 @endforeach
+<x-delete></x-delete>
 </div>
-
 @endif
 
-<div class="back">
-    <a href="{{ route('future.index') }}">戻る</a>
-</div>
+</body>
+
+</html>
 
 <style>
+.box8 {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #232323;
+    background: #fff8e8;
+    border-left: solid 10px #ffc06e;
+    width:100%;
+    height:900px;
+    text-align:center;
+}
+.box8 p {
+    margin: 0; 
+    padding: 0;
+}
+.text_box{
+  line-height:50;
+}
 .fashionable-box1{
   margin: 1em 10px;
   padding: 1em;
@@ -33,28 +52,5 @@
   margin: 0;
   padding: 0;
 }
-.title-box3{
-  margin: 1em 0;
-  background-color: #fff3e0;
-  border: 2px solid #ffa726;
-  letter-spacing: .3px;
-}
 
-.title-box3-title{
-  color: #fff;
-  font-weight: bold;
-  background-color: #ffa726;
-  padding: 4px 6px;
-  text-align: center;
-}
-
-.title-box3 p{
-  margin: 0;
-  padding: 1em;
-}
-.back{
-    position:fixed;
-    bottom:100px;
-    right:5%;
-}
 </style>

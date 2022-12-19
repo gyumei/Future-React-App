@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/future/settingregister/put/{id}', [\App\Http\Controllers\Future\Update\IndexController::class, 'put_display'])->name('future.settingregister.put');
     Route::put('/future/settingregister/update/{id}', \App\Http\Controllers\Future\Update\PutController::class)->name('future.settingregister.update')->where('id', '[0-9]+');
     Route::get('/future/share', [\App\Http\Controllers\Future\IndexController::class, 'share'])->name('future.share');
+    Route::get('/future/outline', [\App\Http\Controllers\Future\IndexController::class, 'outline'])->name('future.outline');
 });
 
 require __DIR__.'/auth.php';

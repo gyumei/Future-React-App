@@ -30,7 +30,8 @@ class IndexController extends Controller
         $me = auth()->id();
         return view('future.index', ['futures'=> $futures, 'year'=> $thisyear, 'month'=>$thismonth, 'day'=>$thisday, 'me'=>$me]);
     }
-
+    
+    //自分の投稿を返す
     public function ownpage($id)
     {
         $number = $id;
@@ -38,6 +39,7 @@ class IndexController extends Controller
         return view('future.ownpage')->with('ownpage', $ownpage);
     }
 
+    //自分のマイページを返す
     public function mypage($id)
     {
         $me = $id;
@@ -154,15 +156,20 @@ class IndexController extends Controller
         }
         return view('future.future_register')->with('me', $me)->with('follow_users', $follow_users);
     }
+    
     //誰に共有したかをデータベースに登録します。
     public function share()
     {
         $me = auth()->id();
+        //ページネーションの数を記載
         $limit_count = 4;
+        //今年の年月日を取得しています
         $year = date('Y');
         $month = date('n');
         $day = date('j');
+        //自分に共有されたレコードの取得
         $sharings_to_me = Share::where('shared_user', '=', $me)->get();
+        //レコードがあるか確認するために一つ取得してチェックする
         $sharings_to_me_one = Share::where('shared_user', '=', $me)->first();
         if(is_null($sharings_to_me_one)){
             return view('future.share');
@@ -173,5 +180,11 @@ class IndexController extends Controller
         }
         return view('future.share')->with('futures', $futures)->with('year', $year)->with('month', $month)->with('day', $day);
         }
+    }
+    
+    //概要ページにとばす
+    public function outline()
+    {
+        return view('future.outline');
     }
 }

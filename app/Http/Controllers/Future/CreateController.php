@@ -17,13 +17,18 @@ class CreateController extends Controller
     {
         $future = new Future;
         $future->user_id = $request->user()->id;
-        $future->content = $request->input('future');
+        $content = $request->input('future');
+        if(is_null($content)){
+            $future->content = "投稿はありませんでした。";
+        }else{
+            $future->content = $content;
+        }
         $future->year = $request->input('year');
         $future->month = $request->input('month');
         $future->day = $request->input('day');
         $future->save();
         
-        $sharings = $_POST['select_user'];
+        $sharings = $request->input('select_user');
         if(is_null($sharings)){
         }
         else{
@@ -35,7 +40,7 @@ class CreateController extends Controller
             $share->save();
         }
         }
-
+        
         $dir = 'sample';
         $images = $request->file('images');
         foreach ($images as $image){

@@ -1,3 +1,4 @@
+<body>
 <div class="sample_box5">
 <h1>マイページです</h1>
 <p>ようこそ!!<br>{{ $mypage->name }}さん</p>
@@ -23,8 +24,19 @@
 <div class="back">
 <a href="{{ route('future.index') }}">戻る</a>
 </div>
+</body>
 
 <style>
+a{
+  position: relative;
+  display: inline-block;
+  transition: .3s;
+  text-decoration:none;
+  font-size:  20px;
+}
+body{
+    background-color:#FFB74D;
+}
 .sample_box5 {
     padding: 1em 1.5em;
     margin: 2em 0;
@@ -32,6 +44,8 @@
     border: dotted 6px #ffa500;/*線*/
     color:#000000;/*文字色*/
     text-align:center;
+    width:30%;
+    margin:10% 35%;
 }
 .back{
     position:fixed;
