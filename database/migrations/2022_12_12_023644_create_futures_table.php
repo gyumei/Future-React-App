@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('futures', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
             $table->string('content');
-            $table->integer('year');
-            $table->integer('month');
-            $table->integer('day');
+            $table->string('year');
+            $table->integer('number');
             $table->timestamps();
         });
     }

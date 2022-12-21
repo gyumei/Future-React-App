@@ -34,6 +34,7 @@
         @endauth
         @guest
         <li class="header01-item"><a href="{{ route('login') }}"><div class="header05">login</div></a></li>
+        <li class="header01-item"><a href="{{ route('future.auth') }}"><div class="header01"> Google login</div></a></li>
         <li class="header01-item"><a href="{{ route('register') }}"><div class="header06">register</div></a></li>
         @endguest
     </ul>

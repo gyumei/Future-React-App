@@ -32,8 +32,6 @@ class ApiTestController extends Controller
 
         $event = $service->events->insert($calendarId, $event);
         
-        $me = auth()->id();
-        
         return redirect()->route('future.index');
     }
     

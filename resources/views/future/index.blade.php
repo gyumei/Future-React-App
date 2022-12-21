@@ -1,3 +1,4 @@
+
 <x-layout title="Time Capsule" :me="$me">
 <div class="title">memories to the future
 <div class="form">
@@ -30,7 +31,7 @@
 
 
 <div class="content">
-<x-time :futures="$futures" :year="$year" :month="$month" :day="$day"></x-time>
+<x-time :futures="$futures"></x-time>
 </div>
 </x-layout>
 <style>

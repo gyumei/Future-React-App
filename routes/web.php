@@ -25,7 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/future/mypage/{id}', [\App\Http\Controllers\Future\IndexController::class, 'mypage'])->name('future.mypage');
     Route::get('/future/otherpage/{id}', [\App\Http\Controllers\Future\IndexController::class, 'otherpage'])->name('future.otherpage');
     Route::get('/future/ownpage/{id}', [\App\Http\Controllers\Future\IndexController::class, 'ownpage'])->name('future.index.ownpage');
-    Route::get('/register0',[\App\Http\Controllers\Future\IndexController::class, 'register']) ->name('future.register');
+    Route::get('/register_first',[\App\Http\Controllers\Future\IndexController::class, 'register']) ->name('future.register');
     Route::post('/future/search', \App\Http\Controllers\Future\SearchController::class)->name('future.search');
     Route::post('/future/create', \App\Http\Controllers\Future\CreateController::class)->name('future.create');
     Route::get('/dashboard', function () {return view('dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
@@ -42,5 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/future/outline', [\App\Http\Controllers\Future\IndexController::class, 'outline'])->name('future.outline');
     Route::get('/api', [\App\Http\Controllers\ApiTestController::class, 'test']);
 });
+Route::get('/auth/redirect', [\App\Http\Controllers\GoogleLoginController::class, 'getGoogleAuth'])->name('future.auth');
+Route::get('/login/callback', [\App\Http\Controllers\GoogleLoginController::class, 'authGoogleCallback']);
 
 require __DIR__.'/auth.php';

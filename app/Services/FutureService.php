@@ -18,24 +18,6 @@ class FutureService
         return Future::with('images')->orderBy('created_at', 'DESC')->where('user_id', '=', $me)->paginate($limit_count);
     }
 
-    public function getYear()
-    {
-        $year = date('Y');
-        return $year;
-    }
-
-    public function getMonth()
-    {
-        $month = date('n');
-        return $month;
-    }
-
-    public function getDay()
-    {
-        $day = date('j');
-        return $day;
-    }
-
     public function saveFuture(int $userId, string $content,  int $year, int $month, int $day, string $filename)
     {
         DB::transaction(function () use ($userId, $content,  $year, $month, $day, $filename){

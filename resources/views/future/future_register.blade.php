@@ -8,33 +8,11 @@
 
     <p>投稿フォーム</p>
     <form action="{{ route('future.create') }}" method="post" enctype="multipart/form-data">
-        @csrf        
-
-        <div class="data">
-            <label for="date">公開日</label>
-            <div class="cp_ipselect cp_sl01" id="date1">
-                <select type="number" name="year" id="date" required>
-                    <?php for ($i = 2022; $i <= 2100; $i++) { ?>
-                    <option value="{{ $i }}"><?php echo $i; ?>年</option>
-                    <?php } ?>
-                </select>
-            </div>
-            
-            <div class="cp_ipselect cp_sl01" id="date2">
-                <select type="number" name="month" id="date" required>
-                    <?php for ($i = 1; $i <= 12; $i++) { ?>
-                    <option value="{{$i }}"><?php echo $i; ?>月</option>
-                    <?php } ?>
-                </select>
-            </div>
-            <div class="cp_ipselect cp_sl01" id="date3">
-                <select type="number" name="day" id="date" value="1" required>
-                    <?php for ($i = 1; $i <= 31; $i++) { ?>
-                    <option value="{{ $i }}"><?php echo $i; ?>日</option>
-                    <?php } ?>
-                </select>
-            </div>
-        </div>
+        @csrf     
+        
+        <input type="text" name="title" placeholder="ここにタイトルを入力">
+        
+        <input type="datetime-local" name="year" min="2023-00-00T00:00" max="2100-12-31T23:59">
 
         <div class="text">
         <label for="future-content">入力</label>
@@ -80,6 +58,16 @@
                 <br>
             </div>
         </div>
+      
+      <div class="checkbox">
+      <fieldset>
+        <legend>Google Calendarにこの投稿を登録する場合はここにチェックをつけてください</legend>
+        <div>
+          <input type="checkbox" id="scales" name="google" checked>
+        </div>
+      </fieldset>
+      </div>
+
         <button type="submit" class="button btn btn-warning" id="submit_button">提出</button>
     </form>
     <x-delete></x-delete>
@@ -308,6 +296,11 @@ table tbody th {
 .cp_ipselect.cp_sl01 select {
   padding: 8px 38px 8px 8px;
   color: black;
+}
+.checkbox{
+  width:300px;
+  margin-left:670px;
+  margin-bottom:100px;
 }
 </style>
 </style>

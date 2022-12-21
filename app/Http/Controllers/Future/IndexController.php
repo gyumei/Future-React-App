@@ -24,13 +24,10 @@ class IndexController extends Controller
     public function __invoke(Request $request, FutureService $futureService)
     {
         $futures = $futureService->getFutures();
-        $thisyear = $futureService->getYear();
-        $thismonth = $futureService->getMonth();
-        $thisday = $futureService->getDay();
         $me = auth()->id();
-        return view('future.index', ['futures'=> $futures, 'year'=> $thisyear, 'month'=>$thismonth, 'day'=>$thisday, 'me'=>$me]);
+        return view('future.index', ['futures'=> $futures,  'me'=>$me]);
     }
-    
+
     //自分の投稿を返す
     public function ownpage($id)
     {

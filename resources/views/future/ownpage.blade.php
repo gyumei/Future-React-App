@@ -7,13 +7,13 @@
                     <p>{{ $ownpage->user->name }}さんの投稿です。</p>
                 </div>
                 <div class="fashionable-box3">
-                    <p>{{ $ownpage->year }}年{{ $ownpage->month }}月{{ $ownpage->day }}日に公開されました。</p>
+                    <p>{{ $ownpage->year }}に公開されました。</p>
                 </div>
                 <div class="fashionable-box3">
                     <p>思い出の言葉<br>{{ $ownpage->content }}</p>
                 </div>
                 @foreach($ownpage->images as $image)
-                @if(mb_substr($image->name, -3) == 'jpg' and (mb_substr($image->name, -3) == 'peg') and (mb_substr($image->name, -3) == 'gif') and (mb_substr($image->name, -3) == 'png'))
+                @if(mb_substr($image->name, -3) === "jpg" and (mb_substr($image->name, -3) === "peg") and (mb_substr($image->name, -3) === "gif") and (mb_substr($image->name, -3) === "png"))
                 <img src="{{ asset($image->path) }}" width="500px" height="300px">
                 @elseif(mb_substr($image->name, -3) == 'mp4' and mb_substr($image->name, -3) == 'mov')
                 <br>
