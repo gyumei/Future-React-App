@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/future/settingregister/update/{id}', \App\Http\Controllers\Future\Update\PutController::class)->name('future.settingregister.update')->where('id', '[0-9]+');
     Route::get('/future/share', [\App\Http\Controllers\Future\IndexController::class, 'share'])->name('future.share');
     Route::get('/future/outline', [\App\Http\Controllers\Future\IndexController::class, 'outline'])->name('future.outline');
+    Route::get('/api', [\App\Http\Controllers\ApiTestController::class, 'test']);
 });
 
 require __DIR__.'/auth.php';

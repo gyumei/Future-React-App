@@ -21,12 +21,13 @@
 @endif
 
 </div>
-<div class="back">
-<a href="{{ route('future.index') }}">戻る</a>
-</div>
+<x-delete></x-delete>
 </body>
 
 <style>
+.sample_box5 a{
+    color:red;
+}
 a{
   position: relative;
   display: inline-block;
@@ -40,8 +41,8 @@ body{
 .sample_box5 {
     padding: 1em 1.5em;
     margin: 2em 0;
-    background-color:#ffffe0;/*背景色*/
-    border: dotted 6px #ffa500;/*線*/
+    background-color:#FF8C00;/*背景色*/
+    border: 6px #ffa500;/*線*/
     color:#000000;/*文字色*/
     text-align:center;
     width:30%;
