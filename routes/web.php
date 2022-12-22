@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/api', [\App\Http\Controllers\ApiTestController::class, 'test']);
 });
 Route::get('/auth/redirect', [\App\Http\Controllers\GoogleLoginController::class, 'getGoogleAuth'])->name('future.auth');
-Route::get('/login/callback', [\App\Http\Controllers\GoogleLoginController::class, 'authGoogleCallback']);
+
+Route::get('/login/callback', [\App\Http\Controllers\GoogleLoginController::class, 'handleGoogleCallback']);
 
 require __DIR__.'/auth.php';
