@@ -8,6 +8,7 @@ use App\Models\Profile;
 use Illuminate\Http\Request;
 use App\services\FutureService;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Inertia\Inertia;
 
 class PutController extends Controller
 {
@@ -21,11 +22,11 @@ class PutController extends Controller
     {
         $profile_id = $id; 
         $me = auth()->id();
-        $future = Profile::where('id','=', $profile_id)->first();
+        $future = Profile::where('profiles_id', '=', $me)->first();
         $future->content = $request->input('setting');
         $future->save();
         $mypage = User::where('id', '=', $me)->first();
-        $profiles = Profile::where('profiles_id', '=', $me)->get();
-        return redirect()->route('future.mypage',['id' => $me])->with('me', $me)->with('mypage', $mypage)->with('profiles', $profiles);
+        $profiles = Profile::where('profiles_id', '=', $me)->first();
+        return Inertia::render("Mypage",['me'=>$me, 'mypage'=>$mypage, 'profiles'=>$profiles]);
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Profile;
 use App\Models\User;
+use Inertia\Inertia;
 
 class SettingController extends Controller
 {
@@ -24,6 +25,6 @@ class SettingController extends Controller
         $setting->content = $request->input('setting');
         $setting->save();
         $profiles = Profile::where('profiles_id', '=', $me)->get();
-        return view('future.mypage', ['mypage'=> $mypage, 'me' => $id, 'profiles' => $profiles]);
+        return Inertia::render("Mypage",['mypage'=>$mypage, 'me' => $id, 'profiles' => $profile]);
     }
 }

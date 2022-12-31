@@ -14,11 +14,13 @@ use Carbon\Carbon;
 use Google_Client;
 use Google_Service_Calendar;
 use Google_Service_Calendar_Event;
+use Inertia\Inertia;
 
 class CreateController extends Controller
 {
     public function __invoke(Request $request)
     {
+
         $future = new Future;
         $future->title = $request->input('title');
         $future->user_id = $request->user()->id;
@@ -54,6 +56,8 @@ class CreateController extends Controller
         
         $dir = 'sample';
         $images = $request->file('images');
+        if(is_null($images)){
+        }else{
         foreach ($images as $image){
             $file_name = $image->getClientOriginalName();
             // 取得したファイル名で保存
@@ -62,14 +66,17 @@ class CreateController extends Controller
             $image = new Image();
             $image->name = $file_name;
             $image->path = 'storage/' . $dir . '/' . $file_name;
+            $image->image = base64_encode($image);
             $image->future_id = auth()->id();
             $image->save();
             $future->images()->attach($image->id);
         }
+    }
         
         $new_register_time = $register_time->addHour(4);
         $register_time_one = $new_register_time->addHours(5);
         
+        //Google CalendarのAPI連携を実装しました。
         $google_calendar = $request->input('google');
         if(is_null($google_calendar)){
         }
@@ -97,6 +104,7 @@ class CreateController extends Controller
         return redirect()->route('future.index');
     }
     
+    //クライアントの取得
     private function getClient()
     {
         $client = new Google_Client();

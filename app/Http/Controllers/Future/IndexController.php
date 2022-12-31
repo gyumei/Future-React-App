@@ -11,6 +11,7 @@ use App\Models\Share;
 use Illuminate\Http\Request;
 use App\Services\FutureService;
 use App\Http\Requests\Future\CreateRequest;
+use Inertia\Inertia;
 
 class IndexController extends Controller
 {
@@ -21,19 +22,18 @@ class IndexController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __invoke(Request $request, FutureService $futureService)
+    public function index(Future $future)
     {
-        $futures = $futureService->getFutures();
         $me = auth()->id();
-        return view('future.index', ['futures'=> $futures,  'me'=>$me]);
+        return Inertia::render("Index",["futures" => Future::with("images")->where('user_id', '=', $me)->get(), 'me'=>$me]);
     }
 
-    //自分の投稿を返す
+    //選択された投稿を返す
     public function ownpage($id)
     {
         $number = $id;
         $ownpage = Future::where('id', '=', $number)->first();
-        return view('future.ownpage')->with('ownpage', $ownpage);
+        return Inertia::render("Ownpage",['ownpage'=>$ownpage]);
     }
 
     //自分のマイページを返す
@@ -41,14 +41,13 @@ class IndexController extends Controller
     {
         $me = $id;
         $mypage = User::where('id', '=', $me)->first();
-        $profiles = Profile::where('profiles_id', '=', $me)->get();
         $profiles_one = Profile::where('profiles_id', '=', $me)->first();
         if(is_null($profiles_one)){
-            $profiles = null;
-            return view('future.mypage')->with('me', $me)->with('mypage', $mypage)->with('profiles', $profiles);
+            $profiles_one = null;
+            return Inertia::render("Mypage",['me'=>$me, 'mypage' => $mypage, 'profiles' => $profiles_one]);
         }
         else{
-            return view('future.mypage')->with('me', $me)->with('mypage', $mypage)->with('profiles', $profiles);
+            return Inertia::render("Mypage",['me'=>$me, 'mypage' => $mypage, 'profiles' => $profiles_one]);
         }
     }
 
@@ -59,7 +58,7 @@ class IndexController extends Controller
         $otherpage = User::where('id', '=', $other)->first();
         $confirmation = Follow::where('followed', '=', $other)->where('follow', '=', $me)->first();
         $profile = Profile::where('profiles_id', '=', $other)->first();
-        return view('future.otherpage')->with('otherpage', $otherpage)->with('confirmation', $confirmation)->with('profile', $profile);
+        return Inertia::render("Otherpage",['otherpage'=>$otherpage, 'confirmation' => $confirmation, 'profile' => $profile]);
     }
 
     public function follow($id)
@@ -75,7 +74,7 @@ class IndexController extends Controller
         $follow->save();
         $confirmation = Follow::where('followed', '=', $other)->where('follow', '=', $me)->first();
         $profile = Profile::where('profiles_id', '=', $other)->first();
-        return view('future.otherpage')->with('otherpage', $other_record)->with('confirmation', $confirmation)->with('profile', $profile);
+        return Inertia::render("Otherpage",['otherpage'=>$other_record, 'confirmation' => $confirmation, 'profile' => $profile]);
     }
     
     //フォロー解除します。
@@ -88,7 +87,7 @@ class IndexController extends Controller
         $other_record = User::where('id', '=', $other)->first();
         $follow_new = Follow::where('followed', '=', $other)->where('follow', '=', $me)->first();
         $profile = Profile::where('profiles_id', '=', $other)->first();
-        return view('future.otherpage')->with('otherpage', $other_record)->with('confirmation', $follow_new)->with('profile', $profile);
+        return Inertia::render("Otherpage",['otherpage'=>$other_record, 'confirmation' => $follow_new, 'profile' => $profile]);
     }
 
    //フォローしてる人のデータ一覧の返却
@@ -101,12 +100,12 @@ class IndexController extends Controller
         //データが存在していなければそのまま遷移
         if(is_null($follows_one)){
         $following = null;
-        return view('future.follow_display')->with('follows', $following);
+        return Inertia::render("Follow_display",['follows'=>$following]);
         }else{
         foreach ($follows as $follow){
         $following[] = User::where('id', '=', $follow->followed)->first();
         }
-        return view('future.follow_display')->with('follows', $following);
+        return Inertia::render("Follow_display",['follows'=>$following]);
         }
     }
 
@@ -120,21 +119,20 @@ class IndexController extends Controller
         //データが存在していなければそのまま遷移
         if(is_null($follows_one)){
         $followed = null;
-        return view('future.followed_display')->with('follows', $followed);
+        return Inertia::render("Followed_display",['follows'=>$followed]);
         }
         else{
         foreach ($follows as $follow){
         $followed[] = User::where('id', '=', $follow->follow)->first();
             }
-        return view('future.followed_display')->with('follows', $followed);
+        return Inertia::render("Followed_display",['follows'=>$followed]);
         }
     }
 
-    public function setting($id)
+    public function first_setting($id)
     {
-        $myid = $id;
-        $my_record = User::where('id', '=', $myid)->first();
-        return view('future.setting')->with('my_record', $my_record);
+        $my_id = $id;
+        return Inertia::render("Setting",['my_id'=>$my_id]);
     }
 
     public function register()
@@ -144,14 +142,14 @@ class IndexController extends Controller
         $followers_one = Follow::where('follow', '=', $me)->first();
         if(is_null($followers_one)){
             $follow_users = null;
-            return view('future.future_register')->with('me', $me)->with('follow_users', $follow_users);
+            return Inertia::render("Future_register",['me'=>$me, 'follow_users'=>$follow_users]);
         }
         else{
         foreach ($followers as $follower){
         $follow_users[] = User::where('id', '=', $follower->followed)->first();
             }
         }
-        return view('future.future_register')->with('me', $me)->with('follow_users', $follow_users);
+        return Inertia::render("Future_register",['me'=>$me, 'follow_users'=>$follow_users]);
     }
     
     //誰に共有したかをデータベースに登録します。
@@ -160,28 +158,25 @@ class IndexController extends Controller
         $me = auth()->id();
         //ページネーションの数を記載
         $limit_count = 4;
-        //今年の年月日を取得しています
-        $year = date('Y');
-        $month = date('n');
-        $day = date('j');
         //自分に共有されたレコードの取得
         $sharings_to_me = Share::where('shared_user', '=', $me)->get();
         //レコードがあるか確認するために一つ取得してチェックする
         $sharings_to_me_one = Share::where('shared_user', '=', $me)->first();
         if(is_null($sharings_to_me_one)){
-            return view('future.share');
+            $futures = null;
+            return Inertia::render("Share",['futures'=>$futures]);
         }
         else{
         foreach($sharings_to_me as $sharing_to_me){
         $futures[] = Future::with('images')->orderBy('created_at', 'DESC')->where('id', '=', $sharing_to_me->future_id)->first();
         }
-        return view('future.share')->with('futures', $futures)->with('year', $year)->with('month', $month)->with('day', $day);
+        return Inertia::render("Share",['futures'=>$futures]);
         }
     }
     
     //概要ページにとばす
     public function outline()
     {
-        return view('future.outline');
+        return Inertia::render("Outline");
     }
 }

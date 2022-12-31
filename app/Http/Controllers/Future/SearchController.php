@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Future;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Inertia\Inertia;
 
 class SearchController extends Controller
 {
@@ -18,6 +19,6 @@ class SearchController extends Controller
     {
         $username = $request->input('search');
         $search_users = User::where('name', 'like', "%$username%")->get();
-        return view('future.collect')->with('search_users', $search_users);
+        return Inertia::render("Collect",['search_users' => $search_users]);
     }
 }

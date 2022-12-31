@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Profile;
 use App\Models\User;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Inertia\Inertia;
 
 class IndexController extends Controller
 {
@@ -27,19 +28,19 @@ class IndexController extends Controller
             $profile->profiles_id = $me;
             $profile->content = $request->input('setting');
             $profile->save();
-            $profiles = Profile::where('profiles_id', '=', $me)->get();
-            return redirect()->route('future.mypage',['id' => $me])->with('me', $me)->with('mypage', $mypage)->with('profiles', $profiles);
+            $profiles = Profile::where('profiles_id', '=', $me)->first();
+            return Inertia::render("Mypage",['me'=>$me, 'mypage'=>$mypage, 'profiles'=>$profiles]);
         }
         else{
             $profiles = null;
-            return redirect()->route('future.mypage',['id' => $me])->with('me', $me)->with('mypage', $mypage)->with('profiles', $profiles);
+            return Inertia::render("Mypage",['me'=>$me, 'mypage'=>$mypage, 'profiles'=>$profiles]);
         }
     }
+
     public function put_display()
     {
-        $my_record = auth()->id();
-        $profile = Profile::where('profiles_id', '=', $my_record)->first();
-        return view('future.update')->with('my_record', $my_record)->with('profile', $profile);
+        $me = auth()->id();
+        $profile = Profile::where('profiles_id', '=', $me)->first();
+        return Inertia::render("Update",['me'=>$me, 'profile'=>$profile]);
     }
-    
 }

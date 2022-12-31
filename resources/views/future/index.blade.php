@@ -1,5 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<title>タイムカプセル</title>
+<meta name="description" charset=”UTF-8” content="思い出を未来に残します">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+<div class="flex justify-center" id="first_header">
+    <nav class="header01-nav">
+    <h1 class="header01-logo">タイムカプセル</h1>
+    <ul class="header01-list">
+        @auth
+        <li class="header01-item"><a href="{{ route('future.register') }}" ><div class="header01">post</div></a></li>
+         <li class="header01-item"><a href="#"><div class="header05">Question</div></a></li>
+        <li class="header01-item"><a href="{{ route('future.followeddisplay') }}"><div class="header02">Follower</div></a></li>
+        <li class="header01-item"><a href="{{ route('future.followdisplay') }}"><div class="header03">follow</div></a></li>
+        <li class="header01-item"><a href="{{ route('future.mypage',['id' => $me]) }}"><div class="header04">mypage</div></a></li>
+        <li class="header01-item"><a href="{{ route('future.share') }}"><div class="header06">share</div></a></li>
+        <li class="header01-item"><a href="{{ route('future.outline') }}" ><div class="header01">outline</div></a></li>
+        <li class="header01-item"><a href="#"><div class="header02">Q</div></a></li>
+        <li class="header01-item"><a href=""><div class="header05">
+            <form method="post" action="{{ route('logout') }}">
+                @csrf
+                <div>
+                    <button
+                        onclick="event.preventDefault(); this.closest('form').submit();"
+                        >logout
+                    </button>
+                </div>
+            </form></div>
+        </a>
+        </li>
+        @endauth
+        @guest
+        <li class="header01-item"><a href="{{ route('login') }}"><div class="header05">login</div></a></li>
+        <li class="header01-item"><a href="{{ route('future.auth') }}"><div class="header01"> Google login</div></a></li>
+        <li class="header01-item"><a href="{{ route('register') }}"><div class="header06">register</div></a></li>
+        @endguest
+    </ul>
+    </nav>
+</div>
 
-<x-layout title="Time Capsule" :me="$me">
+
+
 <div class="title">memories to the future
 <div class="form">
 <form action="{{ route('future.search') }}" method="post">
@@ -28,117 +71,48 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-6/js/6-1-6.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 
 <div class="content">
-<x-time :futures="$futures"></x-time>
+
+@auth
+    <div class="box5">
+    @foreach($futures as $future)
+
+    @if($future->number == 1)
+    <div class="sample_box_title">
+    <div class="theme">個人のタイムカプセル</div>
+    <hr>
+        <p class="data_text">{{ $future->user->name }}さんが{{ $future->year }}に向けて投稿した思い出です。</p>
+    </div>
+
+    @else
+    <div class="sample_box_title">
+        <div class="data_text">
+            <a href="{{ route('future.index.ownpage',['id' => $future->id]) }}">タイムカプセル</a>
+        </div>
+        <hr>
+        <p>{{ $future->user->name }}さんが{{ $future->year }}に向けて投稿した思い出です。</p>
+    </div>
+
+    @endif
+
+    @endforeach
+    </div>
+    <div  di="paginate" class="mt-1 mb-1 row justify-content-center text-danger">
+            {{ $futures->links() }}
+    </div>
+@endauth
+
 </div>
-</x-layout>
+
+   
+</body>
+</html>
+
 <style>
-@charset "utf-8";
-
-/*==================================================
-スライダーのためのcss
-===================================*/
-.slider {/*横幅94%で左右に余白を持たせて中央寄せ*/
-  padding-top:30px;
-   width:94%;
-    margin:0 auto;
-}
-
-.slider img {
-    width:100%;/*スライダー内の画像を横幅100%に*/
-    height:auto;
-}
-
-/*slickのJSで書かれるタグ内、スライド左右の余白調整*/
-
-.slider .slick-slide {
-    margin:0 10px;
-}
-
-/*矢印の設定*/
-
-/*戻る、次へ矢印の位置*/
-.slick-prev, 
-.slick-next {
-    position: absolute;/*絶対配置にする*/
-    top: 42%;
-    cursor: pointer;/*マウスカーソルを指マークに*/
-    outline: none;/*クリックをしたら出てくる枠線を消す*/
-    border-top: 2px solid #666;/*矢印の色*/
-    border-right: 2px solid #666;/*矢印の色*/
-    height: 15px;
-    width: 15px;
-}
-
-.slick-prev {/*戻る矢印の位置と形状*/
-    left: -1.5%;
-    transform: rotate(-135deg);
-}
-
-.slick-next {/*次へ矢印の位置と形状*/
-    right: -1.5%;
-    transform: rotate(45deg);
-}
-
-/*ドットナビゲーションの設定*/
-
-.slick-dots {
-    text-align:center;
-  margin:20px 0 0 0;
-}
-
-.slick-dots li {
-    display:inline-block;
-  margin:0 5px;
-}
-
-.slick-dots button {
-    color: transparent;
-    outline: none;
-    width:8px;/*ドットボタンのサイズ*/
-    height:8px;/*ドットボタンのサイズ*/
-    display:block;
-    border-radius:50%;
-    background:#ccc;/*ドットボタンの色*/
-}
-
-.slick-dots .slick-active button{
-    background:#333;/*ドットボタンの現在地表示の色*/
-}
-
-
-/*========= レイアウトのためのCSS ===============*/
-.form{
-    font-size: 30px;
-    font-weight: normal;
-}
-
-.title{
-    text-align:center;
-    padding:250px 0px 350px 0px;
-    font-weight: bold;
-    font-size: 100px;
-    background: #fff2e4;/*背景色*/
-    height:650px;
-    font-family:Comic Sans MS;
-}
-
-.hoge{
-border:0;
-padding:10px;
-font-size:1.3em;
-font-family:Arial, sans-serif;
-border:solid 1px #ccc;
-margin:0 0 20px;
-width:300px;
-}
-
-.content{
-    background-color:#fff2e4;
-    height:350px;
-}
 
 </style>
 

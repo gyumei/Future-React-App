@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('path');
+            $table->longText('image');
             $table->foreignId('future_id')->constrained('futures')->cascadeOnDelete();
             $table->timestamps();
         });
