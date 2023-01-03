@@ -5,10 +5,7 @@ namespace App\Http\Controllers\Future;
 use App\Models\Image;
 use App\Models\Future;
 use App\Models\Share;
-<<<<<<< HEAD
-=======
 use App\Models\User;
->>>>>>> 3759a0a (react導入後初めてのコミット)
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Future\CreateRequest;
@@ -19,10 +16,7 @@ use Google_Client;
 use Google_Service_Calendar;
 use Google_Service_Calendar_Event;
 use Inertia\Inertia;
-<<<<<<< HEAD
-=======
 use Illuminate\Support\Facades\File;
->>>>>>> 3759a0a (react導入後初めてのコミット)
 
 class CreateController extends Controller
 {
@@ -30,17 +24,11 @@ class CreateController extends Controller
     {
 
         $future = new Future;
-<<<<<<< HEAD
-        $future->title = $request->input('title');
-        $future->user_id = $request->user()->id;
-        $content = $request->input('future');
-=======
         $future->user_id = $request->user()->id;
         $username = User::where('id', '=', $request->user()->id)->first();
         $future->username = $username->name;
         $future->title = $request->input('title');
         $content = $request->input('content');
->>>>>>> 3759a0a (react導入後初めてのコミット)
         if(is_null($content)){
             $future->content = "投稿はありませんでした。";
         }else{
@@ -50,15 +38,9 @@ class CreateController extends Controller
         $register_time = new Carbon($request->input('year'));
         $now_time = new Carbon();
         if(($register_time->gte($now_time)) == true){
-<<<<<<< HEAD
-            $future->number = 1;
-        }else{
-            $future->number = 0;
-=======
             $future->number = 0;
         }else{
             $future->number = 1;
->>>>>>> 3759a0a (react導入後初めてのコミット)
         }
 
         $future->save();
@@ -83,20 +65,12 @@ class CreateController extends Controller
         foreach ($images as $image){
             $file_name = $image->getClientOriginalName();
             // 取得したファイル名で保存
-<<<<<<< HEAD
-            Storage::putFile('public/sample', $image);
-            // ファイル情報をDBに保存
-            $image = new Image();
-            $image->name = $file_name;
-            $image->path = 'storage/' . $dir . '/' . $file_name;
-=======
             Storage::putFileAs('public/sample', $image, $file_name);
             // ファイル情報をDBに保存
             $image = new Image();
             $image->name = $file_name;
             $image->path = '/' .'storage/' . $dir . '/' . $file_name;
             $image->extension = File::extension($image->path);
->>>>>>> 3759a0a (react導入後初めてのコミット)
             $image->image = base64_encode($image);
             $image->future_id = auth()->id();
             $image->save();

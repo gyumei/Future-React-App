@@ -34,6 +34,13 @@ const Future_register = (props) => {
     })
     console.log(data.select_user);
   }
+  
+  const {textlength, settextlength} = useState();
+  
+  const TextRegister = (e) => {
+        setData("content", e.target.value)
+        settextlength(textlength, e.target.value.length)
+  }
 
     return (
             
@@ -49,9 +56,9 @@ const Future_register = (props) => {
                     <div className="text">
                         <label for="future-content">入力</label>
                         <p>500字まで自由に入力してください</p>
-                        <textarea id="future-content" type="text" placeholder="テキストを入力" maxlength="500" onChange={(e) => setData("content", e.target.value)} required></textarea>
+                        <textarea id="future-content" type="text" placeholder="テキストを入力" maxlength="500" onChange={TextRegister} required></textarea>
                         <div>👇現在の文字数</div>
-                        <div id="current-length">{ data.content }</div>
+                        <div id="current-length">{ textlength }</div>
                     </div>
                     
                 {

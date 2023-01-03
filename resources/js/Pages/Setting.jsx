@@ -2,10 +2,7 @@ import React from "react";
 import { Inertia } from "@inertiajs/inertia";
 import { Link, useForm } from '@inertiajs/inertia-react';
 import Authenticated from "@/Layouts/AuthenticatedLayout";
-<<<<<<< HEAD
-=======
 import './css/Setting.css';
->>>>>>> 3759a0a (react導入後初めてのコミット)
 
 const Setting = (props) => {
     
@@ -27,13 +24,9 @@ const Setting = (props) => {
                 <textarea  onChange={(e) => setData("setting", e.target.value)}></textarea>
                 <button type="submit" className="p-1 bg-purple-300 hover:bg-purple-400 rounded-md">設定</button>
             </form>
-<<<<<<< HEAD
-            <Link href={`/future`}>戻る</Link>
-=======
             <div className="button019">
 	           <Link href={`/future`}>戻る</Link>
 	        </div>
->>>>>>> 3759a0a (react導入後初めてのコミット)
         </div>
         );
 }

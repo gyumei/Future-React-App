@@ -25,13 +25,9 @@ class IndexController extends Controller
     public function index(Future $future)
     {
         $me = auth()->id();
-<<<<<<< HEAD
-        return Inertia::render("Index",["futures" => Future::with("images")->where('user_id', '=', $me)->get(), 'me'=>$me]);
-=======
         $limit_count = 4;
         $future = Future::orderBy('created_at', 'DESC')->where('user_id', '=', $me)->paginate($limit_count);
         return Inertia::render("Index",["futures" => $future, 'me'=>$me]);
->>>>>>> 3759a0a (react導入後初めてのコミット)
     }
 
     //選択された投稿を返す
@@ -39,11 +35,7 @@ class IndexController extends Controller
     {
         $number = $id;
         $ownpage = Future::where('id', '=', $number)->first();
-<<<<<<< HEAD
-        return Inertia::render("Ownpage",['ownpage'=>$ownpage]);
-=======
         return Inertia::render("Ownpage",['ownpage'=>$ownpage->load('images')]);
->>>>>>> 3759a0a (react導入後初めてのコミット)
     }
 
     //自分のマイページを返す

@@ -2,11 +2,7 @@ import React from "react";
 import { Inertia } from "@inertiajs/inertia";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Link } from '@inertiajs/inertia-react';
-<<<<<<< HEAD
-import './Mypage.css';
-=======
 import './css/Mypage.css';
->>>>>>> 3759a0a (react導入後初めてのコミット)
 
 const Mypage = (props) => {
     const { mypage } = props; 
@@ -15,11 +11,7 @@ const Mypage = (props) => {
     
     return (
             <body>
-<<<<<<< HEAD
-                <div class="sample_box5">
-=======
                 <div className="sample_box5">
->>>>>>> 3759a0a (react導入後初めてのコミット)
                     <h1>マイページです</h1>
                     <p>ようこそ!!{ mypage.name }さん</p>
                     
@@ -44,11 +36,7 @@ const Mypage = (props) => {
             }
             </div>
             
-<<<<<<< HEAD
-            <div class="button019">
-=======
             <div className="button019">
->>>>>>> 3759a0a (react導入後初めてのコミット)
                 <Link href={`/future`}>ホームに戻る</Link>
             </div>
             </body>

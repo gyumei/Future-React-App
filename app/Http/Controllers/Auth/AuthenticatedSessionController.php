@@ -54,10 +54,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-<<<<<<< HEAD
-        return redirect('/');
-=======
         return redirect('/future');
->>>>>>> 3759a0a (react導入後初めてのコミット)
     }
 }

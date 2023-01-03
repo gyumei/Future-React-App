@@ -61,14 +61,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/future/outline', [IndexController::class, 'outline']);
     Route::get('/api', [\App\Http\Controllers\ApiTestController::class, 'test']);
 });
-<<<<<<< HEAD
-Route::get('/auth/redirect', [GoogleLoginController::class, 'getGoogleAuth']);
-
-Route::get('/login/callback', [\App\Http\Controllers\GoogleLoginController::class, 'handleGoogleCallback']);
-=======
 Route::get('/auth/redirect', [GoogleLoginController::class, 'getGoogleAuth'])->name('future.auth');
 
 Route::get('/login/callback', [GoogleLoginController::class, 'handleGoogleCallback']);
->>>>>>> 3759a0a (react導入後初めてのコミット)
 
 require __DIR__.'/auth.php';

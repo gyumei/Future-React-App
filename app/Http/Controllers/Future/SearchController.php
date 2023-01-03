@@ -18,12 +18,8 @@ class SearchController extends Controller
     public function __invoke(Request $request)
     {
         $username = $request->input('search');
-<<<<<<< HEAD
-        $search_users = User::where('name', 'like', "%$username%")->get();
-=======
         $me = auth()->id();
         $search_users = User::where('name', 'like', "%$username%")->where('id', '!=', $me)->get();
->>>>>>> 3759a0a (react導入後初めてのコミット)
         return Inertia::render("Collect",['search_users' => $search_users]);
     }
 }
