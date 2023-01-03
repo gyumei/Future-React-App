@@ -2,7 +2,8 @@ import React from "react";
 import { Inertia } from "@inertiajs/inertia";
 import { Link, useForm, useState } from '@inertiajs/inertia-react';
 import Authenticated from "@/Layouts/AuthenticatedLayout";
-import './APP.css';
+import './css/Index.css';
+import moment from 'moment'
 
 const Index = (props) => {
     const { futures } = props;
@@ -14,8 +15,9 @@ const Index = (props) => {
         e.preventDefault();
         post("/future/search");
     }
-
-    console.log(futures)
+    const numbers = Number(futures.links.length);
+    
+    const now = moment()
 
     return (
         <html>
@@ -34,28 +36,23 @@ const Index = (props) => {
                             <li className="header01-item"><Link href={`/future/mypage/${me}`}><div className="header04">mypage</div></Link></li>
                             <li className="header01-item"><Link href={`/future/share`}><div className="header06">share</div></Link></li>
                             <li className="header01-item"><Link href={`/future/outline`}><div className="header01">outline</div></Link></li>
-                            <li className="header01-item"><a href=""><div class="header05">
-                                <form method="post" action={route('logout')}>
-                                    <div>
-                                        <button onclick="event.preventDefault(); this.closest('form').submit();">logout</button>
-                                    </div>
-                                </form>
+                            <li className="header01-item"><div class="header05">
+                                <Link href={route('logout')} method="post" as="button">
+                                            Log Out
+                                        </Link>
                                 </div>
-                                </a>
                             </li>
                         </ul>
                     ) : (
                         <>
                         <ul className="header01-list">
                             <li className="header01-item"><Link href={route('login')}><div class="header02">login</div></Link></li>
-                            <li className="header01-item"><Link href={`/auth/redirect`}><div class="header01">Google login</div></Link></li>
+                            <li className="header01-item"><a href="/auth/redirect"><div class="header01"> Google login</div></a></li>
                             <li className="header01-item"><Link href={route('register')}><div class="header03">Register</div></Link></li>
                         </ul>
                         </>
                     )}
                             
-                                
-                        
                     </nav>
                 </div>
                 <div className="title">memories to the future</div>
@@ -71,27 +68,41 @@ const Index = (props) => {
                 
                 <div className="content">
                     <div className="box5">
-                        { futures.map((future) => (
+                        { futures.data.map((future) => (
+                        <>
                         <div key={future.id}>
-                            {future.number == 1 ? (
+                            { moment(future.year).isAfter(now) ? (
                             <div className="sample_box_title">
                                 <div className="theme">個人のタイムカプセル</div>
-                                <p className="data_text">{ future.user }さんが{ future.year }に向けて投稿した思い出です。</p>
+                                <p className="data_text">{ future.username }さんが{ future.year }に向けて投稿した思い出です。</p>
                             </div>
                             ):(
                             <div className="sample_box_title">
                                 <div className="data_text">
                                     <Link href={`/future/ownpage/${future.id}`} >タイムカプセル</Link>
                                 </div>
-                                <p>{ future.user }さんが{ future.year }に向けて投稿した思い出です。</p>
+                                <p>{ future.username }さんが{ future.year }に向けて投稿した思い出です。</p>
                             </div>
                             )
                             }
                         </div>
+                        </>
                         )
                         )
                         }
                     </div>
+                </div>
+                <div class='paginate'>
+                <p>{console.log(futures.links)}</p>
+                { futures.links.map((links) => (
+                        <>
+                        <div class="box1">
+                        <p><Link href={`/future?page=${Number(links.label)}`} >{ links.label }</Link></p>
+                        </div>
+                        </>
+                        )
+                    )
+                    }
                 </div>
             </body>
         </html>
