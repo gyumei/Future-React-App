@@ -17,6 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('path');
+<<<<<<< HEAD
+=======
+            $table->string('extension');
+>>>>>>> 3759a0a (react導入後初めてのコミット)
             $table->longText('image');
             $table->foreignId('future_id')->constrained('futures')->cascadeOnDelete();
             $table->timestamps();

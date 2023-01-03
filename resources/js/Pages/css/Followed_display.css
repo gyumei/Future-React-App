@@ -1,0 +1,69 @@
+.box8 {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #232323;
+    background: #fff8e8;
+    border-left: solid 10px #ffc06e;
+    width:100%;
+    height:900px;
+    text-align:center;
+}
+.box8 p {
+    margin: 0; 
+    padding: 0;
+}
+.text_box{
+  line-height:50;
+}
+.fashionable-box1{
+  margin: 1em 10px;
+  padding: 1em;
+  background-color: #fff8e1;
+  border: dashed 3px #ffc107;
+  box-shadow: 0 0 0 10px #fff8e1;
+  border-radius: 5px;
+}
+.fashionable-box1 p{
+  margin: 0;
+  padding: 0;
+}
+.button019 a {
+    background: #eee;
+    border-radius: 3px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 280px;
+    padding: 10px 25px;
+    color: #313131;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+    left:600px;
+    text-decoration:none;
+}
+.button019 a:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  right: 2rem;
+  font-size: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: right 0.3s;
+  width: 6px;
+  height: 6px;
+  border-top: solid 2px currentColor;
+  border-right: solid 2px currentColor;
+  transform: translateY(-50%) rotate(45deg);
+}
+.button019 a:hover {
+  background: #6bb6ff;
+  color: #FFF;
+}
+.button019 a:hover:after {
+  right: 1.4rem;
+}

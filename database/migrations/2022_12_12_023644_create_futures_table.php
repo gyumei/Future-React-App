@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('futures', function (Blueprint $table) {
             $table->id();
+<<<<<<< HEAD
+=======
+            $table->string('username');
+>>>>>>> 3759a0a (react導入後初めてのコミット)
             $table->string('title');
             $table->string('content');
             $table->string('year');

@@ -2,6 +2,10 @@ import React from "react";
 import { Inertia } from "@inertiajs/inertia";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Link } from '@inertiajs/inertia-react';
+<<<<<<< HEAD
+=======
+import './css/Share.css';
+>>>>>>> 3759a0a (react導入後初めてのコミット)
 
 const Share = (props) => {
 
@@ -46,9 +50,15 @@ return (
                     )
                 ()
             }
+<<<<<<< HEAD
                 <div class="back">
                     <Link href={`/future`}>戻る</Link>
                 </div>
+=======
+            <div className="button019">
+	           <Link href={`/future`}>戻る</Link>
+	       </div>
+>>>>>>> 3759a0a (react導入後初めてのコミット)
             </body>
     );
 }
