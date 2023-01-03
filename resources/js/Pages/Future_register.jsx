@@ -29,20 +29,22 @@ const Future_register = (props) => {
     //checkedItemsは初期値を空のオブジェクトにする
     const [checkedItems, setCheckedItems] = useState({});
     
-    const handleChange = e => {
+    const handleChange = (e) => {
   //checkedItemsのstateをセット
       setCheckedItems({
         ...checkedItems,
         [e.target.id]: e.target.checked
-      })
+      });
+      
       const dataPushArray = Object.entries(checkedItems).reduce((pre,[key, value])=>{
             value && pre.push(key)
             return pre
           },[]);
-      setData("select_user", dataPushArray);
-      console.log("dataPushArray:", dataPushArray);
-      console.log('checkedItems:', checkedItems);
-      console.log(data.select_user);
+          
+         console.log(checkedItems);
+         console.log(dataPushArray);
+
+    setData("select_user", dataPushArray);
     }
 
     return (
@@ -61,7 +63,7 @@ const Future_register = (props) => {
                         <p>500字まで自由に入力してください</p>
                         <textarea id="future-content" type="text" placeholder="テキストを入力" maxlength="500" onChange={(e) => setData("content", e.target.value)} required></textarea>
                         <div>👇現在の文字数</div>
-                        <div id="current-length">{ data.content }</div>
+                        <div id="current-length"></div>
                     </div>
                     
                 {
@@ -83,7 +85,10 @@ const Future_register = (props) => {
                                     <div key={follow_user.id}>
                                         <tr>
                                             <th>{ follow_user.id }</th>
-                                            <td><input type="checkbox" id={`id_${follow_user.id}`} checked={checkedItems[follow_user.id]} value={follow_user} onChange={handleChange} /></td>
+                                            <label htmlFor={`id_${follow_user.id}`} key={`key_${follow_user.id}`}>
+                                            <td><input type="checkbox" id={`${follow_user.id}`} checked={checkedItems[follow_user.id]} value={follow_user} onChange={handleChange} /></td>
+
+                                            </label>
                                             <td>{ follow_user.name }</td>
                                         </tr>
                                     </div>
@@ -107,9 +112,7 @@ const Future_register = (props) => {
                         </label>
 
                         <button onClick={AttentionFunc} className="c-button">注意</button>
-                        <p id="msg">あなたが選択した画像は{data.images}です。
-                        </p>
-                        <p id="msg">{}です。
+                        <p id="msg">
                         </p>
                     </div>
                 </div>
