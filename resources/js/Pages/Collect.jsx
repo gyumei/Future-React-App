@@ -2,10 +2,7 @@ import React from "react";
 import { Inertia } from "@inertiajs/inertia";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Link } from '@inertiajs/inertia-react';
-<<<<<<< HEAD
-=======
 import './css/Collect.css';
->>>>>>> 3759a0a (react導入後初めてのコミット)
 
 const Collect = (props) => {
     const { search_users } = props;

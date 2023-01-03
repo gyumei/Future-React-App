@@ -2,10 +2,7 @@ import React from "react";
 import { Inertia } from "@inertiajs/inertia";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Link } from '@inertiajs/inertia-react';
-<<<<<<< HEAD
-=======
 import './css/Followed_display.css';
->>>>>>> 3759a0a (react導入後初めてのコミット)
 
 const Followed_display = (props) => {
     const { follows } = props; 
