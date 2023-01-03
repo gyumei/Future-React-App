@@ -47,13 +47,15 @@ class CreateController extends Controller
         
         $sharings = $request->input('select_user');
         if(is_null($sharings)){
+            dd($sharings);
         }
         else{
-        foreach ($sharings as $key => $value){
+        dd($sharings);
+        foreach ($sharings as $sharing){
             $share = new Share;
             $share->future_id = $future->id;
             $share->share_user = auth()->id();
-            $share->shared_user = $key;
+            $share->shared_user = $sharing;
             $share->save();
         }
         }
