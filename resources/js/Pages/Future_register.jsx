@@ -12,18 +12,18 @@ const Future_register = (props) => {
         title:"",
         year: "",
         content: "",
-        select_user:[],
+        select_user:{},
         images:[],
         google:"",
     })
     
-    const handleSendPosts = (e) => {
-        e.preventDefault();
-        post(`/future/create`);
-    }
-    
     const AttentionFunc = () => {
         alert('ctrlキーを押しながら選択すると複数ファイル選択することができます。')
+    }
+    
+    const handleSendPosts = (e) => {
+        　e.preventDefault();
+          post(`/future/create`);
     }
     
     //checkedItemsは初期値を空のオブジェクトにする
@@ -35,16 +35,15 @@ const Future_register = (props) => {
         ...checkedItems,
         [e.target.id]: e.target.checked
       });
-      
-      const dataPushArray = Object.entries(checkedItems).reduce((pre,[key, value])=>{
+      const dataPushArray = Object.entries({
+        ...checkedItems,
+        [e.target.id]: e.target.checked
+      }).reduce((pre,[key, value])=>{
             value && pre.push(key)
             return pre
           },[]);
-          
-         console.log(checkedItems);
-         console.log(dataPushArray);
+        setData("select_user",dataPushArray);
 
-    setData("select_user", dataPushArray);
     }
 
     return (
@@ -87,7 +86,7 @@ const Future_register = (props) => {
                                             <th>{ follow_user.id }</th>
                                             <label htmlFor={`id_${follow_user.id}`} key={`key_${follow_user.id}`}>
                                             <td><input type="checkbox" id={`${follow_user.id}`} checked={checkedItems[follow_user.id]} value={follow_user} onChange={handleChange} /></td>
-
+                                            
                                             </label>
                                             <td>{ follow_user.name }</td>
                                         </tr>
