@@ -3,6 +3,7 @@ import { Inertia } from "@inertiajs/inertia";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Link, useForm } from '@inertiajs/inertia-react';
 import './css/Register.css'
+import './css/All.css'
 import { useState } from "react";
 import axios from "axios";
 

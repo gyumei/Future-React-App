@@ -28,7 +28,7 @@ const Update = (props) => {
                     </form>
                 </div>
 
-                <div className="back-to-index">
+                <div className="back-to-former">
 	               <Link href={`/future/mypage/${me}`}>戻る</Link>
 	             </div>
             </div>

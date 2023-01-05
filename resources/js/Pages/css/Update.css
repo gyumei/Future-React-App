@@ -29,7 +29,7 @@ a {
     margin: 0; 
     padding: 0;
 }
-.back-to-index a {
+.back-to-former a {
     background: #eee;
     border-radius: 3px;
     position: relative;
@@ -46,7 +46,7 @@ a {
     left:600px;
     text-decoration:none;
 }
-.back-to-index a:after {
+.back-to-former a:after {
   content: "";
   position: absolute;
   top: 50%;
@@ -63,10 +63,10 @@ a {
   border-right: solid 2px currentColor;
   transform: translateY(-50%) rotate(45deg);
 }
-.back-to-index a:hover {
+.back-to-former a:hover {
   background: #6bb6ff;
   color: #FFF;
 }
-.back-to-index a:hover:after {
+.back-to-former a:hover:after {
   right: 1.4rem;
 }
