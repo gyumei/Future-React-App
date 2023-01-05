@@ -26,8 +26,8 @@ class IndexController extends Controller
     {
         $me = auth()->id();
         $limit_count = 4;
-        $future = Future::orderBy('created_at', 'DESC')->where('user_id', '=', $me)->paginate($limit_count);
-        return Inertia::render("Index",["futures" => $future, 'me'=>$me]);
+        $futures = Future::orderBy('created_at', 'DESC')->where('user_id', '=', $me)->paginate($limit_count);
+        return Inertia::render("Index",["futures" => $futures, 'me'=>$me]);
     }
 
     //選択された投稿を返す

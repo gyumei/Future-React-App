@@ -3,6 +3,7 @@ import { Inertia } from "@inertiajs/inertia";
 import { Link, useForm } from '@inertiajs/inertia-react';
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import './css/Update.css';
+import './css/All.css';
 
 const Update = (props) => {
     const {profile} = props;
@@ -16,20 +17,22 @@ const Update = (props) => {
         put(`/future/settingregister/update/${me}`);
     }
     return (
-            <div>
-            <form onSubmit={handleSendPosts}>
-                <div>
-                    <label for="search">プロフィール設定</label>
-                    <input type="text"  onChange={(e) => setData("setting", e.target.value)}/>
-                    <span className="text-red-600">{props.errors.title}</span>
-                </div>                    
-                    <button type="submit" className="p-1 bg-purple-300 hover:bg-purple-400 rounded-md">send</button>
-            </form>
+        <body>
+            <div className="update-all">
+                <div className="update-profile">
+                    <form onSubmit={handleSendPosts}>
+                        <label for="search">プロフィール設定</label>
+                        <input type="text" size="20" onChange={(e) => setData("setting", e.target.value)}/>
+                        <span className="text-red-600">{props.errors.title}</span>
+                        <button type="submit" className="p-1 bg-red-300 hover:bg-purple-400 rounded-md">send</button>
+                    </form>
+                </div>
 
-            <div className="button019">
-	               <Link href={`/future`}>戻る</Link>
-	           </div>
-        </div>
+                <div className="back-to-index">
+	               <Link href={`/future/mypage/${me}`}>戻る</Link>
+	             </div>
+            </div>
+        </body>
         );
 }
 

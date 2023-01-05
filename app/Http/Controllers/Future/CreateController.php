@@ -42,6 +42,7 @@ class CreateController extends Controller
         }else{
             $future->number = 1;
         }
+        
 
         $future->save();
         

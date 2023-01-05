@@ -1,4 +1,35 @@
-.button019 a {
+body {
+    background-color:#FF8C00;
+}
+a {
+  text-decoration: none;
+}
+.update-all{
+    padding: 0.5em 1em;
+    color: #232323;
+    background: #fff8e8;
+    border-left: solid 10px #ffc06e;
+    width:100%;
+    height:950px;
+    text-align:center;
+}
+.update-profile {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    background: #ffa726;
+    border-bottom: solid 6px #FFD700;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    width:30%;
+    position:absolute;
+    top:20%;
+    left:35%;
+}
+.update-profile p {
+    margin: 0; 
+    padding: 0;
+}
+.back-to-index a {
     background: #eee;
     border-radius: 3px;
     position: relative;
@@ -11,10 +42,11 @@
     color: #313131;
     transition: 0.3s ease-in-out;
     font-weight: 500;
+    top:750px;
     left:600px;
     text-decoration:none;
 }
-.button019 a:after {
+.back-to-index a:after {
   content: "";
   position: absolute;
   top: 50%;
@@ -31,10 +63,10 @@
   border-right: solid 2px currentColor;
   transform: translateY(-50%) rotate(45deg);
 }
-.button019 a:hover {
+.back-to-index a:hover {
   background: #6bb6ff;
   color: #FFF;
 }
-.button019 a:hover:after {
+.back-to-index a:hover:after {
   right: 1.4rem;
 }

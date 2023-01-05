@@ -1,4 +1,10 @@
-.button019 a {
+body {
+    background-color:#FF8C00;
+}
+a {
+  text-decoration: none;
+}
+.back-to-index a {
     background: #eee;
     border-radius: 3px;
     position: relative;
@@ -14,7 +20,7 @@
     left:600px;
     text-decoration:none;
 }
-.button019 a:after {
+.back-to-index a:after {
   content: "";
   position: absolute;
   top: 50%;
@@ -31,10 +37,10 @@
   border-right: solid 2px currentColor;
   transform: translateY(-50%) rotate(45deg);
 }
-.button019 a:hover {
+.back-to-index a:hover {
   background: #6bb6ff;
   color: #FFF;
 }
-.button019 a:hover:after {
+.back-to-index a:hover:after {
   right: 1.4rem;
 }

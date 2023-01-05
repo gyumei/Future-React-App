@@ -3,6 +3,7 @@ import { Inertia } from "@inertiajs/inertia";
 import { Link, useForm, useState } from '@inertiajs/inertia-react';
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import './css/Index.css';
+import './css/All.css';
 import moment from 'moment'
 
 const Index = (props) => {
@@ -21,11 +22,8 @@ const Index = (props) => {
 
     return (
         <html>
-        <head>
-            <meta name="csrf-token" content="{{ csrf_token() }}"/>
-        </head>
             <body>
-                <div className="flex justify-center" id="first_header">
+                <div className="first_header">
                     <nav className="header01-nav">
                         <h1 className="header01-logo">タイムカプセル</h1>
                         {props.auth.user ? (
@@ -55,8 +53,8 @@ const Index = (props) => {
                             
                     </nav>
                 </div>
-                <div className="title">memories to the future</div>
-                <div className="form">  
+                <div className="title-index">memories to the future</div>
+                <div className="user-form">  
                     <form onSubmit={handleSendPosts}>
                         <div>
                             <h2>ユーザ検索</h2>
@@ -66,42 +64,44 @@ const Index = (props) => {
                     </form>
                 </div>
                 
-                <div className="content">
-                    <div className="box5">
+                <div className="content-index">
+                    <div className="post-list">
                         { futures.data.map((future) => (
                         <>
                         <div key={future.id}>
                             { moment(future.year).isAfter(now) ? (
                             <div className="sample_box_title">
-                                <div className="theme">個人のタイムカプセル</div>
+                                <div>個人のタイムカプセル</div>
                                 <p className="data_text">{ future.username }さんが{ future.year }に向けて投稿した思い出です。</p>
                             </div>
                             ):(
                             <div className="sample_box_title">
-                                <div className="data_text">
-                                    <Link href={`/future/ownpage/${future.id}`} >タイムカプセル</Link>
-                                </div>
+                                <Link href={`/future/ownpage/${future.id}`} >タイムカプセル</Link>
                                 <p>{ future.username }さんが{ future.year }に向けて投稿した思い出です。</p>
                             </div>
                             )
                             }
                         </div>
-                        </>
-                        )
-                        )
-                        }
+                        </> 
+                        ))}
                     </div>
                 </div>
-                <div class='paginate'>
-                <p>{console.log(futures.links)}</p>
+                <div className='paginate'>
                 { futures.links.map((links) => (
-                        <>
-                        <div class="box1">
-                        <p><Link href={`/future?page=${Number(links.label)}`} >{ links.label }</Link></p>
-                        </div>
+                    <>
+                    {
+                    (()=> {
+                        if(links.label == "&laquo; Previous" || links.label == "Next &raquo;") {
+                        }
+                        else {
+                        return (
+                            <div className="paginate-link">
+                                <p><Link href={`/future?page=${Number(links.label)}`} >{ links.label }</Link></p>
+                            </div>
+                         )}})()}
                         </>
                         )
-                    )
+                      )
                     }
                 </div>
             </body>
