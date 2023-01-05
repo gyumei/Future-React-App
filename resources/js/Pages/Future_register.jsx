@@ -4,8 +4,8 @@ import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Link, useForm } from '@inertiajs/inertia-react';
 import './css/Register.css'
 import './css/All.css'
-import { useState } from "react";
 import axios from "axios";
+import { useRef, useState } from "react";
 
 const Future_register = (props) => {
     const {follow_users} = props;
@@ -45,6 +45,28 @@ const Future_register = (props) => {
           },[]);
         setData("select_user",dataPushArray);
     }
+    const [files, setFiles] = useState([]);
+    
+    const inputRef = useRef(null);
+
+    const onFileInputChange = (e) => {
+    setData("images", e.target.files)
+
+    console.log("onChange!");
+
+    setFiles([...files, ...e.target.files]);
+    e.target.value = "";
+    };
+
+    const fileUpload = () => {
+    console.log(inputRef.current);
+    inputRef.current.click();
+    };
+
+    const resetFile = () => {
+       setFiles([]);
+    };
+
     
     return (
             <body>
@@ -105,11 +127,17 @@ const Future_register = (props) => {
                     <div id="target">
                         <label class="upload-label">
                             ファイルを選択
-                             <input type="file" id="fileBox" accept="image/*,video/mp4" multiple onChange={(e) => setData("images", e.target.files)}/>
+                             <input type="file" ref={inputRef} id="fileBox" accept="image/*,video/mp4" multiple onChange={onFileInputChange}/>
                         </label>
+                        <button onClick={resetFile}>リセット</button>
 
                         <button onClick={AttentionFunc} className="c-button">注意</button>
                         <p id="msg">
+                        {files.map(file => (
+                            <>
+                            <div>{file.name}</div>
+                            </>
+                        ))}
                         </p>
                     </div>
                 </div>
