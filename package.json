@@ -3,7 +3,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "heroku-postbuild": "npm run prod", //この記述を追加する
+        "heroku-postbuild": "npm run build", //この記述を追加する
     },
     "devDependencies": {
         "@headlessui/react": "^1.4.2",
