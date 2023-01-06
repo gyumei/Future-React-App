@@ -2,21 +2,22 @@ import React from "react";
 import { Inertia } from "@inertiajs/inertia";
 import { Link, useForm } from '@inertiajs/inertia-react';
 import Authenticated from "@/Layouts/AuthenticatedLayout";
-import './css/Update.css';
-import './css/All.css';
+import './css/Setting.css';
 
-const Update = (props) => {
-    const {profile} = props;
-    const {me} = props;
-    {/* フォーム登録の設定 */}
-    const {setting, setData, put} = useForm({
-        profile: profile.content,
+const Setting = (props) => {
+    
+    const { my_id } = props;
+    
+    {/* フォームの登録 */}
+    const {data, setData, post} = useForm({
+        setting: "",
     })
-
+    
     const handleSendPosts = (e) => {
         e.preventDefault();
-        put(`/future/settingregister/update/${me}`);
+        post(`/future/settingregister/${my_id}`);
     }
+
     return (
         <body>
             <div className="update-all">
@@ -30,11 +31,11 @@ const Update = (props) => {
                 </div>
 
                 <div className="back-to-former">
-	               <Link href={`/future/mypage/${me}`}>戻る</Link>
+	               <Link href={`/future/mypage/${my_id}`}>戻る</Link>
 	             </div>
             </div>
         </body>
         );
 }
 
-export default Update;
+export default Setting;

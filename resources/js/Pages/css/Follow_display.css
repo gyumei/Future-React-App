@@ -1,21 +1,4 @@
-.title-box3{
-  margin-bottom: 100px;
-  background-color: #fff3e0;
-  border: 2px solid #ffa726;
-  letter-spacing: .3px;
-  text-align:center;
-  width:30%;
-  margin:10% 40%;
-}
-.title-box3 a{
-  text-decoration:none;
-  color:black;
-}
-.title-box3 p{
-  margin: 0;
-  padding: 1em;
-}
-.box8 {
+.follow-box {
     padding: 0.5em 1em;
     color: #232323;
     background: #fff8e8;
@@ -24,7 +7,24 @@
     height:900px;
     text-align:center;
 }
-.title-box3-title{
+.follow-title-box{
+  margin-bottom: 100px;
+  background-color: #fff3e0;
+  border: 2px solid #ffa726;
+  letter-spacing: .3px;
+  text-align:center;
+  width:30%;
+  margin:10% 40%;
+}
+.follow-title-box a{
+  text-decoration:none;
+  color:black;
+}
+.follow-title-box p{
+  margin: 0;
+  padding: 1em;
+}
+.follow-title-box{
   font-weight: bold;
   background-color: #ffa726;
   padding: 4px 6px;

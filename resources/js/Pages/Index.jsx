@@ -9,15 +9,18 @@ import moment from 'moment'
 const Index = (props) => {
     const { futures } = props;
     const { me } = props;
+    {/* form登録searchの設定 */}
     const {data, setData, post} = useForm({
         search: "",
     });
+    {/* post設定 */}
     const handleSendPosts = (e) => {
         e.preventDefault();
         post("/future/search");
     }
-    const numbers = Number(futures.links.length);
     
+    const numbers = Number(futures.links.length);
+    {/* 現在時刻の取得 */}
     const now = moment()
 
     return (
@@ -53,13 +56,16 @@ const Index = (props) => {
                             
                     </nav>
                 </div>
+                {/* タイトルの */}
                 <div className="title-index">memories to the future</div>
+                
                 <div className="user-form">  
                     <form onSubmit={handleSendPosts}>
                         <div>
                             <h2>ユーザ検索</h2>
                             <input type="text" placeholder="検索" onChange={(e) => setData("search", e.target.value)}/>
                             <button className="mt-2 text-sm hover:text-gray-800" type="submit">検索</button>
+                            <span className="text-red-600">{props.errors.search}</span>
                         </div>
                     </form>
                 </div>
@@ -91,9 +97,11 @@ const Index = (props) => {
                     <>
                     {
                     (()=> {
+                        {/* 最初と最後に出てくる不要な文字の削除 */}
                         if(links.label == "&laquo; Previous" || links.label == "Next &raquo;") {
                         }
                         else {
+                        {/* リンクラベルの描画 */}
                         return (
                             <div className="paginate-link">
                                 <p><Link href={`/future?page=${Number(links.label)}`} >{ links.label }</Link></p>

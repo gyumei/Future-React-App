@@ -13,9 +13,10 @@ const Otherpage = (props) => {
     return (
         <body>
             <div class="otherpage-box">
+            <div className="otherpage-box-title">
             <title>{ otherpage.name }さんのページです</title>
-            <h1>{ otherpage.name }さんのページです</h1>
-            <div className="otherpage-content">
+            <div className="title-name">{ otherpage.name }さんのページです</div>
+            <div className="title-otherpage-title">
             {
                 (
                    ()=> {
@@ -61,6 +62,7 @@ const Otherpage = (props) => {
             <div className="back-to-index">
 	               <Link href={`/future`}>戻る</Link>
 	           </div>
+            </div>
             </div>
         </body>
         );

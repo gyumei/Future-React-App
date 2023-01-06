@@ -28,6 +28,7 @@ const Ownpage = (props) => {
                 {
                 (
                    ()=> {
+                        {/* 画像があるかないかの場合分け */}
                         if(ownpage.images == null) {
                         } else {
                         return (

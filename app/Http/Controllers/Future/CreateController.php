@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\File;
 
 class CreateController extends Controller
 {
-    public function __invoke(Request $request)
+    public function __invoke(CreateRequest $request)
     {
 
         $future = new Future;
@@ -35,17 +35,9 @@ class CreateController extends Controller
             $future->content = $content;
         }
         $future->year = $request->input('year');
-        $register_time = new Carbon($request->input('year'));
-        $now_time = new Carbon();
-        if(($register_time->gte($now_time)) == true){
-            $future->number = 0;
-        }else{
-            $future->number = 1;
-        }
-        
-
         $future->save();
         
+        //選択されたユーザーごとにshareテーブルに登録する
         $sharings = $request->input('select_user');
         if(is_null($sharings)){
         }
@@ -71,14 +63,14 @@ class CreateController extends Controller
             $image = new Image();
             $image->name = $file_name;
             $image->path = '/' .'storage/' . $dir . '/' . $file_name;
+            //拡張子の取得
             $image->extension = File::extension($image->path);
-            $image->image = base64_encode($image);
             $image->future_id = auth()->id();
             $image->save();
             $future->images()->attach($image->id);
         }
     }
-        
+        $register_time = new Carbon($request->input('year'));
         $new_register_time = $register_time->addHour(4);
         $register_time_one = $new_register_time->addHours(5);
         

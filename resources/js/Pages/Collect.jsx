@@ -13,6 +13,7 @@ const Collect = (props) => {
             <div className="collect-box3">
                 <div className="collect-box3-title"><h1>検索一覧</h1></div>
                 <p className="collect-content">
+                {/* 入力された値の結果の出力*/}
                 { search_users.map((search_user) => (
                     <div className="content-result" key={search_user.id}>
                         <p>検索結果：[ <Link href={`/future/otherpage/${search_user.id}`}>{ search_user.name }</Link>]</p>

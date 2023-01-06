@@ -9,6 +9,7 @@ import { useRef, useState } from "react";
 
 const Future_register = (props) => {
     const {follow_users} = props;
+    {/* フォームに使うdata登録 */}
     const {data, setData, post} = useForm({
         title:"",
         year: "",
@@ -18,10 +19,11 @@ const Future_register = (props) => {
         google:"",
     })
     
+    {/* アラームキーの設定*/}
     const AttentionFunc = () => {
         alert('ctrlキーを押しながら選択すると複数ファイル選択することができます。')
     }
-    
+    {/* post送信 */}
     const handleSendPosts = (e) => {
         　e.preventDefault();
           post(`/future/create`);
@@ -36,6 +38,7 @@ const Future_register = (props) => {
         ...checkedItems,
         [e.target.id]: e.target.checked
       });
+      //trueの選択肢を配列にしてまとめる
       const dataPushArray = Object.entries({
         ...checkedItems,
         [e.target.id]: e.target.checked
@@ -45,21 +48,20 @@ const Future_register = (props) => {
           },[]);
         setData("select_user",dataPushArray);
     }
+    {/* ファイル情報の登録 */}
     const [files, setFiles] = useState([]);
     
     const inputRef = useRef(null);
 
     const onFileInputChange = (e) => {
+    {/* 画像の登録 */}
     setData("images", e.target.files)
-
-    console.log("onChange!");
-
+    {/* ファイルの設定 */}
     setFiles([...files, ...e.target.files]);
     e.target.value = "";
     };
 
     const fileUpload = () => {
-    console.log(inputRef.current);
     inputRef.current.click();
     };
 
@@ -77,12 +79,14 @@ const Future_register = (props) => {
                 <p>投稿フォーム</p>
                 <form onSubmit={handleSendPosts} enctype="multipart/form-data">
                     <input type="text" placeholder="ここにタイトルを入力" onChange={(e) => setData("title", e.target.value)}/>
-                    <input type="datetime-local" min="2023-00-00T00:00" max="2100-12-31T23:59" onChange={(e) => setData("year", e.target.value)}/>
+                    <span className="text-red-600">{props.errors.title}</span>
+                    <input type="datetime-local" min="2023-00-00T00:00" max="2100-12-31T23:59" required onChange={(e) => setData("year", e.target.value)}/>
                     
                     <div className="text">
                         <label for="future-content">入力</label>
                         <p>500字まで自由に入力してください</p>
                         <textarea id="future-content" type="text" placeholder="テキストを入力" maxlength="500" onChange={(e) => setData("content", e.target.value)} required></textarea>
+                        <span className="text-red-600">{props.errors.content}</span>
                     </div>
                     
                 {
@@ -128,6 +132,7 @@ const Future_register = (props) => {
                         <label class="upload-label">
                             ファイルを選択
                              <input type="file" ref={inputRef} id="fileBox" accept="image/*,video/mp4" multiple onChange={onFileInputChange}/>
+                             <span className="text-red-600">{props.errors.images}</span>
                         </label>
                         <button onClick={resetFile}>リセット</button>
 

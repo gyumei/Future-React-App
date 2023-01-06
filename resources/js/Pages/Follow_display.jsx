@@ -10,21 +10,22 @@ const Follow_display = (props) => {
 
     return (
             <body>
-            <div className="box8">
+            <div className="follow-box">
             {
                 (
                    ()=> {
+                   {/* フォローしている人がいるかどうかでの場合分け */}
                         if(follows === null) {
                             return (
-                                <div className="title-box3">
-                                    <div className="title-box3-title"><p>あなたがフォロー中の人の一覧です</p></div>
+                                <div className="follow-title-box">
+                                    <div className="follow-title-box"><p>あなたがフォロー中の人の一覧です</p></div>
                                     <p>あなたがフォローしている人はいません</p>
                                 </div>
                             );
                         } else {
                         return (
                             <div class="title-box3">
-                                <div className="title-box3-title"><p>あなたがフォロー中の人の一覧です</p></div>
+                                <div className="follow-title-box"><p>あなたがフォロー中の人の一覧です</p></div>
                                 { follows.map((follow) => (
                                 <div key={follow.id}>
                                     <div className="follow_name"><p><Link href={`/future/otherpage/${follow.id}`}>{ follow.name }</Link></p></div>
