@@ -4,7 +4,6 @@ import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Link } from '@inertiajs/inertia-react';
 import './css/Ownpage.css'
 import './css/All.css'
-import ReactPlayer from 'react-player'
 
 const Ownpage = (props) => {
     const { ownpage } = props;
@@ -38,7 +37,7 @@ const Ownpage = (props) => {
                                 {image.extension == 'jpg' || image.extension == 'png' || image.extension == 'jpeg' || image.extension == 'gif'? (
                                     <img src={ image.path } width="500px" height="300px"/>
                                     ) : (
-                                    <ReactPlayer url={ image.path } id="MainPlay" playing loop controls={true} width="500px" height="300px"/>
+                                    <video url={ image.path } id="MainPlay" playing loop controls={true} width="500px" height="300px"/>
                                 )}
                                 </div>
                                 )) }
