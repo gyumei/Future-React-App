@@ -31,4 +31,7 @@
         "moment": "^2.29.4",
         "react-player": "^2.11.0"
     }
+    "scripts": {
+        "heroku-postbuild": "npm run prod", //この記述を追加する
+    },
 }
