@@ -2,9 +2,8 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
-        "heroku-postbuild": "npm run build",
-    }
+        "build": "vite build"
+    },
     "devDependencies": {
         "@headlessui/react": "^1.4.2",
         "@inertiajs/inertia": "^0.11.0",
@@ -29,7 +28,6 @@
         "@mui/icons-material": "^5.11.0",
         "@mui/material": "^5.11.2",
         "dayjs": "^1.11.7",
-        "moment": "^2.29.4",
-        "react-player": "^2.11.0"
+        "moment": "^2.29.4"
     }
 }
