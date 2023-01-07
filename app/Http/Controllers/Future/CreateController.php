@@ -17,12 +17,10 @@ use Google_Service_Calendar;
 use Google_Service_Calendar_Event;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\File;
-use App\Modules\ImageUpload\ImageManageInterface;
 
 class CreateController extends Controller
 {
-    public function __construct(private ImageManageInterface $imageManager)
-    {}
+
     
     public function __invoke(CreateRequest $request)
     {
@@ -60,7 +58,6 @@ class CreateController extends Controller
         if(is_null($images)){
         }else{
         foreach ($images as $image){
-            $this->imageManager->save($image);
             $file_name = $image->getClientOriginalName();
             // 取得したファイル名で保存
             Storage::putFileAs('public/sample', $image, $file_name);
