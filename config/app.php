@@ -196,6 +196,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         
         Laravel\Socialite\SocialiteServiceProvider::class, // 'providers' 内に追記
+        JD\Cloudder\CloudderServiceProvider::class,
     ],
 
     /*
@@ -212,6 +213,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Cloudder' => JD\Cloudder\Facades\Cloudder::class,
     ])->toArray(),
 
 ];
