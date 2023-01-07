@@ -21,7 +21,7 @@ use App\Modules\ImageUpload\ImageManageInterface;
 
 class CreateController extends Controller
 {
-    public function __construct(private ImageManagerInterface $imageManager)
+    public function __construct(private ImageManageInterface $imageManager)
     {}
     
     public function __invoke(CreateRequest $request)

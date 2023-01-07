@@ -8,10 +8,4 @@ use Carbon\Carbon;
 use App\Models\Image;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use App\Modules\ImageUpload\ImageManagerInterface;
 
-class FutureService
-{
-    public function __construct(private ImageManagerInterface $imageManager)
-
-}
