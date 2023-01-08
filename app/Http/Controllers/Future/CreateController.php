@@ -24,7 +24,7 @@ use App\Services\make_json;
 class CreateController extends Controller
 {
 
-    public function __invoke(CreateRequest $request, make_json $make_json)
+    public function __invoke(CreateRequest $request,)
     {
 
         $future = new Future;
