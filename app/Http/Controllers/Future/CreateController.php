@@ -126,7 +126,8 @@ class CreateController extends Controller
         //JSONファイルの指定
         $make_json = new Make_json();
         $json = $make_json->get_json();
-        $client->setAuthConfig(storage_path($json));
+        file_put_contents(storage_path(made_json.json),$json);
+        $client->setAuthConfig(storage_path(made_json.json));
 
         return $client;
     }
