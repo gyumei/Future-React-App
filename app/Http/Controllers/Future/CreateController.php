@@ -24,7 +24,7 @@ use App\Services\make_json;
 class CreateController extends Controller
 {
 
-    public function __invoke(CreateRequest $request)
+    public function __invoke(CreateRequest $request, make_json $make_json)
     {
 
         $future = new Future;
@@ -124,7 +124,6 @@ class CreateController extends Controller
         //権限の指定
         $client->setScopes(Google_Service_Calendar::CALENDAR_EVENTS);
         //JSONファイルの指定
-        $make_json = new make_json();
         $json = $make_json->get_json();
         $client->setAuthConfig($json);
 
