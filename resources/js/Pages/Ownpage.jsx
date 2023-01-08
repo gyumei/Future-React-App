@@ -39,7 +39,6 @@ const Ownpage = (props) => {
                                     ) : (
                                     <video url={ image.path } id="MainPlay" playing loop controls={true} width="500px" height="300px"/>
                                 )}
-                                {console.log(image.path)}
                                 </div>
                                 )) }
                         </div>
