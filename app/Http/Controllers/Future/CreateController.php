@@ -62,16 +62,8 @@ class CreateController extends Controller
         }else{
         foreach ($images as $image){
             $this->imageManager->save($image);
-
-            $upload = Cloudinary::upload ( $image->getRealPath(), [
-            // ここの設定は各々で数値をいじって下さい
-            "height" => 800,
-            "width" => 560,
-            "crop" => "fit",
-            "border" => "20px_solid_rgb:ffffff",
-            "quality" => "auto",
-            "fetch_format" => "auto",
-            ]);
+            
+            $uploaded_url = Cloudinary::upload($image->getRealPath())->getSecurePath();
             
             $file_name = $image->getClientOriginalName();
             // 取得したファイル名で保存
@@ -80,7 +72,7 @@ class CreateController extends Controller
             $image = new Image();
             $image->name = $file_name;
 
-            $image->path = $upload->getSecurePath();
+            $image->path = $uploaded_url;
             //拡張子の取得
             $image->extension = File::extension($image->path);
             $image->future_id = auth()->id();
