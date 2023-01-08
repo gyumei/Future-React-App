@@ -18,7 +18,7 @@ const Future_register = (props) => {
         images:[],
         google:"",
     })
-    
+
     const AttentionFunc = () => {
         alert('ctrlキーを押しながら選択すると複数ファイル選択することができます。')
     }
