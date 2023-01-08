@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-class make_json {
+class Make_json {
     public function get_json(){
         $array = array(
             "type"=> env("type"),
