@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Future;
 
+require_once make-json.php;
+
 use App\Models\Image;
 use App\Models\Future;
 use App\Models\Share;
@@ -18,8 +20,8 @@ use Google_Service_Calendar_Event;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\File;
 use Cloudinary;
+use make_json;
 
-require_once make-json.php;
 
 class CreateController extends Controller
 {
@@ -125,7 +127,7 @@ class CreateController extends Controller
         $client->setScopes(Google_Service_Calendar::CALENDAR_EVENTS);
         //JSONファイルの指定
         
-        $json = get_json();
+        $json = hoge::get_json();
         $client->setAuthConfig($json);
 
         return $client;
