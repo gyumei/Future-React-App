@@ -2,14 +2,14 @@
     padding: 0.5em 1em;
     color: #232323;
     background: #fff8e8;
-    border-left: solid 10px #ffc06e;
+    border-left: solid 10px #FF8C00;
     width:100%;
     height:900px;
     text-align:center;
 }
 .follow-title-box{
   margin-bottom: 100px;
-  background-color: #FF8C00;
+  background-color: #ffc06e;
   border: 2px solid #ffa726;
   letter-spacing: .3px;
   text-align:center;

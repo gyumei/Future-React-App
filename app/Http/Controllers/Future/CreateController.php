@@ -107,7 +107,6 @@ class CreateController extends Controller
                 'timeZone' => 'Asia/Tokyo',
             ),
         ));
-        
 
         $event = $service->events->insert($calendarId, $event);
         }
@@ -122,6 +121,8 @@ class CreateController extends Controller
         $client->setApplicationName('GoogleCalendarAPIのテスト');
         //権限の指定
         $client->setScopes(Google_Service_Calendar::CALENDAR_EVENTS);
+        //JSONファイルの指定
+        $client->setAuthConfig('$json');
 
         return $client;
     }
