@@ -19,10 +19,12 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\File;
 use Cloudinary;
 
+require_once make-json.php;
+
 class CreateController extends Controller
 {
 
-    public function __invoke(CreateRequest $request, )
+    public function __invoke(CreateRequest $request)
     {
 
         $future = new Future;
@@ -122,7 +124,9 @@ class CreateController extends Controller
         //権限の指定
         $client->setScopes(Google_Service_Calendar::CALENDAR_EVENTS);
         //JSONファイルの指定
-        $client->setAuthConfig('$json');
+        
+        $json = get_json();
+        $client->setAuthConfig($json);
 
         return $client;
     }
