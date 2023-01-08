@@ -18,8 +18,10 @@ const Followed_display = (props) => {
                         if(follows === null) {
                             return (
                                 <div className="follow-title-box">
-                                    <div className="follow-box-name"><p>あなのフォロワーの一覧です</p></div>
-                                    <p>あなたをフォローしている人はいません</p>
+                                    <p>あなのフォロワーの一覧です</p>
+                                    <div className="follow-box-name">
+                                        <p>あなたをフォローしている人はいません</p>
+                                    </div>
                                 </div>
                             );
                         } else {
