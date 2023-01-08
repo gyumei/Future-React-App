@@ -118,13 +118,10 @@ class CreateController extends Controller
     private function getClient()
     {
         $client = new Google_Client();
-
         //アプリケーション名
         $client->setApplicationName('GoogleCalendarAPIのテスト');
         //権限の指定
         $client->setScopes(Google_Service_Calendar::CALENDAR_EVENTS);
-        //JSONファイルの指定
-        $client->setAuthConfig(storage_path('app/api-key/my-project-368607-864cfcca36a3.json'));
 
         return $client;
     }
