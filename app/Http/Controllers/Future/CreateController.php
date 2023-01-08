@@ -107,6 +107,7 @@ class CreateController extends Controller
                 'timeZone' => 'Asia/Tokyo',
             ),
         ));
+        
 
         $event = $service->events->insert($calendarId, $event);
         }

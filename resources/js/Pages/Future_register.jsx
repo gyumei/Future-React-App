@@ -9,7 +9,7 @@ import { useRef, useState } from "react";
 
 const Future_register = (props) => {
     const {follow_users} = props;
-    {/* フォームに使うdata登録 */}
+    {/* data登録 */}
     const {data, setData, post} = useForm({
         title:"",
         year: "",
@@ -19,7 +19,6 @@ const Future_register = (props) => {
         google:"",
     })
     
-    {/* アラームキーの設定*/}
     const AttentionFunc = () => {
         alert('ctrlキーを押しながら選択すると複数ファイル選択することができます。')
     }
@@ -38,7 +37,6 @@ const Future_register = (props) => {
         ...checkedItems,
         [e.target.id]: e.target.checked
       });
-      //trueの選択肢を配列にしてまとめる
       const dataPushArray = Object.entries({
         ...checkedItems,
         [e.target.id]: e.target.checked
@@ -48,20 +46,19 @@ const Future_register = (props) => {
           },[]);
         setData("select_user",dataPushArray);
     }
-    {/* ファイル情報の登録 */}
     const [files, setFiles] = useState([]);
     
     const inputRef = useRef(null);
 
     const onFileInputChange = (e) => {
-    {/* 画像の登録 */}
     setData("images", e.target.files)
-    {/* ファイルの設定 */}
+
     setFiles([...files, ...e.target.files]);
     e.target.value = "";
     };
 
     const fileUpload = () => {
+    console.log(inputRef.current);
     inputRef.current.click();
     };
 
@@ -131,7 +128,7 @@ const Future_register = (props) => {
                     <div id="target">
                         <label class="upload-label">
                             ファイルを選択
-                             <input type="file" id="fileBox" accept="image/*,video/mp4" multiple onChange={(e) => setData("images", e.target.files)}/>
+                             <input type="file" ref={inputRef} id="fileBox" accept="image/*,video/mp4" multiple onChange={onFileInputChange}/>
                              <span className="text-red-600">{props.errors.images}</span>
                         </label>
                         <button onClick={resetFile}>リセット</button>
