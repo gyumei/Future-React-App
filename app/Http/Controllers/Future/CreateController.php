@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Future;
 
-require_once make-json.php;
-
 use App\Models\Image;
 use App\Models\Future;
 use App\Models\Share;
