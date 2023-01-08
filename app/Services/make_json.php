@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Services;
+
 class hoge {
     function get_json(){
         $array = array(
