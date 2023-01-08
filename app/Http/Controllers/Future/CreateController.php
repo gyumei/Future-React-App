@@ -17,7 +17,7 @@ use Google_Service_Calendar;
 use Google_Service_Calendar_Event;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\File;
-use Cloudinary;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class CreateController extends Controller
 {
