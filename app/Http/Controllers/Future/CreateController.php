@@ -17,14 +17,11 @@ use Google_Service_Calendar;
 use Google_Service_Calendar_Event;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\File;
-use App\Modules\ImageUpload\ImageManagerInterface;
-use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary; 
+use Cloudinary;
 
 class CreateController extends Controller
 {
-    public function __construct(private ImageManagerInterface $imageManager)
-    {}
-    
+
     public function __invoke(CreateRequest $request)
     {
 
@@ -58,23 +55,22 @@ class CreateController extends Controller
         
         $dir = 'sample';
         $images = $request->file('images');
+
         if(is_null($images)){
         }else{
         foreach ($images as $image){
-            $this->imageManager->save($image);
             
             $file_name = $image->getClientOriginalName();
-            // 取得したファイル名で保存
-            Storage::putFileAs('public/sample', $image, $file_name);
+
             // ファイル情報をDBに保存
             $image = new Image();
             $image->name = $file_name;
             
-            foreach ($image as $key => $value) {
-					$uploaded_url = Cloudinary::upload($value->getRealPath())->getSecurePath();
-				}
-            $image->path = $uploaded_url;
-			
+            //画像のURLを画面に表示
+            $image_url = Cloudinary::upload($image->getRealPath())->getSecurePath();
+            $image->path = $image_url;
+            
+            dd($image_url);
             //拡張子の取得
             $image->extension = File::extension($image->path);
             $image->future_id = auth()->id();
