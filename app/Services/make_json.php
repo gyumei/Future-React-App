@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-class hoge {
+class make_json{
     function get_json(){
         $array = array(
             "type"=> env("type"),
