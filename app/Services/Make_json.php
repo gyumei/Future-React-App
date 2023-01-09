@@ -23,7 +23,7 @@ class make_json{
     // ファイルを開く（'w'は書き込みモード）
     $fp = fopen($filename, 'w');
     // ファイルに書き込む
-    $data = $json;
+    $data = 'アイウエオ';
     
     fputs($fp, $data);
     // ファイルを閉じる
