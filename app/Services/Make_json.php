@@ -20,6 +20,7 @@ class make_json{
     $json = json_encode( $array ) ;
     $filename = 'make_json.json';
     $data = $json;
+    dd($data);
     // ファイルに書き込む
     file_put_contents($filename, $data);
     }
