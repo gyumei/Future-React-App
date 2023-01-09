@@ -124,7 +124,7 @@ class CreateController extends Controller
         //権限の指定
         $client->setScopes(Google_Service_Calendar::CALENDAR_EVENTS);
         //JSONファイルの指定
-        $array = array(
+        $json = array(
             "type"=> env("type"),
             "project_id"=> env("project_id"),
             "private_key_id"=> env("private_key_id"),
