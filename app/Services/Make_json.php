@@ -17,6 +17,7 @@ class make_json{
             "client_x509_cert_url"=> env("client_x509_cert_url"),
         );
     // 連想配列($array)をJSONに変換(エンコード)する
+    dd($array);
     $json = json_encode( $array ) ;
     dd($json);
     $filename = '/app/public/make_json.json';
