@@ -124,8 +124,10 @@ class CreateController extends Controller
         //権限の指定
         $client->setScopes(Google_Service_Calendar::CALENDAR_EVENTS);
         //JSONファイルの指定
-        $filename = 'make_json.json';
-        $client->setAuthConfig($filename);
+        
+        $json = "make_json.json";
+
+        $client->setAuthConfig($json);
 
         return $client;
     }
