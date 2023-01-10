@@ -21,7 +21,8 @@ class make_json{
     dd($json);
     $filename = '/app/public/make_json.json';
     // ファイルを開く（'w'は書き込みモード）
-    file_put_contents($filename, $json);
+    $number = file_put_contents($filename, $json);
+    dd($number);
     return $filename;
     }
 }
