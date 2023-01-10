@@ -17,12 +17,15 @@ class make_json{
             "client_x509_cert_url"=> env("client_x509_cert_url"),
         );
     // 連想配列($array)をJSONに変換(エンコード)する
-
+    
     $json = json_encode( $array , JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT) ;
+    $json.
     dd($json);
+    $replace = str_replace('\n', 'n', $json);
+    $one_replace = str_replace('\/', '//', $replace);
     $filename = '/app/public/make_json.json';
     // ファイルを開く（'w'は書き込みモード）
-    $number = file_put_contents($filename, $json);
+    file_put_contents($filename, $one_replace);
     return $filename;
     }
 }
