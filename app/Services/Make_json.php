@@ -19,7 +19,7 @@ class make_json{
     // 連想配列($array)をJSONに変換(エンコード)する
     $json = json_encode( $array ) ;
     file_put_contents("make_json.json", "HELLO WORLD");
-$filename = 'C:\make_json.json';
+$filename = 'make_json.json';
 // ファイルを開く（'w'は書き込みモード）
 $fp = fopen($filename, 'w');
 // ファイルに書き込む
