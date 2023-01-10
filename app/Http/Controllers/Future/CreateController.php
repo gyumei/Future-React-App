@@ -68,17 +68,17 @@ class CreateController extends Controller
             $image_url = Cloudinary::upload($image->getRealPath())->getSecurePath();
             
              // ファイル情報をDBに保存
-            $image = new Image();
-            $image->name = $file_name;
+            $img = new Image();
+            $img->name = $file_name;
             
-            $image->path = $image_url;
+            $img->path = $image_url;
             
             //拡張子の取得
-            $image->extension = File::extension($image->path);
+            $img->extension = File::extension($image->path);
             
-            $image->future_id = auth()->id();
+            $img->future_id = auth()->id();
             
-            $image->save();
+            $img->save();
             
             $future->images()->attach($image->id);
         }
