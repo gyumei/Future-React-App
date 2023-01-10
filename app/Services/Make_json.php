@@ -18,9 +18,6 @@ class make_json{
         );
     // 連想配列($array)をJSONに変換(エンコード)する
     $json = json_encode( $array ) ;
-    $filename = './make_json.json';
-    $data = $json;
-    // ファイルに書き込む
-    file_put_contents($filename, $data);
+    file_put_contents("make_json.json", "HELLO WORLD");
     }
 }
