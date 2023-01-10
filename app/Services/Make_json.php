@@ -19,8 +19,6 @@ class make_json{
     // 連想配列($array)をJSONに変換(エンコード)する
     
     $json = json_encode( $array , JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT) ;
-    $replace = str_replace('\n', 'n', $json);
-    $one_replace = str_replace('\/', '//', $replace);
     echo $json;
     $filename = '/app/public/make_json.json';
     // ファイルを開く（'w'は書き込みモード）
