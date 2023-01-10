@@ -18,7 +18,7 @@ class make_json{
         );
     // 連想配列($array)をJSONに変換(エンコード)する
     $json = json_encode( $array ) ;
-    
+    dd($json);
     $filename = '/app/public/make_json.json';
     // ファイルを開く（'w'は書き込みモード）
     file_put_contents($filename, $json);
