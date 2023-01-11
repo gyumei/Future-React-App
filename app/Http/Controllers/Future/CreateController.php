@@ -74,7 +74,7 @@ class CreateController extends Controller
             $img->path = $image_url;
             
             //拡張子の取得
-            $img->extension = File::extension($image->path);
+            $img->extension = File::extension($img->path);
             
             $img->future_id = auth()->id();
             
