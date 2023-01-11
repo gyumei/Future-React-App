@@ -62,6 +62,7 @@ class CreateController extends Controller
         }else{
         foreach ($images as $image){
             //ファイル名の取得
+            dd($image);
             $file_name = $image->getClientOriginalName();
             
             //画像のURLを画面に表示
@@ -125,6 +126,7 @@ class CreateController extends Controller
         $client->setScopes(Google_Service_Calendar::CALENDAR_EVENTS);
         //JSONファイルの指定
         $client->setAuthConfig('/app/google-credentials.json');
+        
         return $client;
     }
 }
