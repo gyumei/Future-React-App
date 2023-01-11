@@ -21,30 +21,28 @@ return (
                             <p>シェアされた投稿はありません。</p>
                         } else {
                         return (
-                    <div className="content">
-                        <div className="share-box">
-                            { futures.map((future) => (
-                            <div key={future.id}>
-                            { moment(future.year).isAfter(now) ? (
-                            <div className="share_box_title">
-                                <div className="theme">個人のタイムカプセル</div>
-                                <p className="data_text">{ future.user }さんが{ future.year }に向けて投稿した思い出です。</p>
+                        <div className="content-index">
+                            <div className="post-list">
+                                { futures.data.map((future) => (
+                                    <>
+                                        <div key={future.id}>
+                                            { moment(future.year).isAfter(now) ? (
+                                                <div className="sample_box_title">
+                                                    <div>個人のタイムカプセル</div>
+                                                    <p className="data_text">{ future.username }さんが{ future.year }に向けて投稿した思い出です。</p>
+                                                </div>
+                                            ):(
+                                                <div className="sample_box_title">
+                                                    <Link href={`/future/ownpage/${future.id}`} >タイムカプセル</Link>
+                                                     <p>{ future.username }さんが{ future.year }に向けて投稿した思い出です。</p>
+                                                </div>
+                                            )
+                                            } 
+                                        </div>
+                                    </> 
+                                ))}
                             </div>
-                            ):(
-                            <div className="share_box_title">
-                                <div className="data_text">
-                                    <Link href={`/future/ownpage/${future.id}`} >タイムカプセル</Link>
-                                </div>
-                                <p>{ future.user }さんが{ future.year }に向けて投稿した思い出です。</p>
-                            </div>
-                            )
-                            }
                         </div>
-                        )
-                        )
-                        }
-                    </div>
-                </div>
                          )
                         }
                         }
