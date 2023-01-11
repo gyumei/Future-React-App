@@ -125,13 +125,11 @@ const Future_register = (props) => {
                 <div className="file">
                     <p>思い出の画像、動画ファイルを選択してください</p>
                     <div id="target">
-                        <button onClick={onFileInputChange}>
                             <label class="upload-label">
                                 ファイルを選択
                                 <input type="file" ref={inputRef} id="fileBox" accept="image/*,video/mp4" multiple onChange={(e) => setData("images", e.target.files)}/>
                                 <span className="text-red-600">{props.errors.images}</span>
                             </label>
-                        </button>
                         <button onClick={resetFile}>リセット</button>
 
                         <button onClick={AttentionFunc} className="c-button">注意</button>
