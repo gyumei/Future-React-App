@@ -59,11 +59,9 @@ class CreateController extends Controller
         $images = $request->file('images');
         
         if(is_null($images)){
-             dd($images);
         }else{
         foreach ($images as $image){
             //ファイル名の取得
-            dd($image);
             $file_name = $image->getClientOriginalName();
             
             //画像のURLを画面に表示
