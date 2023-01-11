@@ -80,7 +80,7 @@ class CreateController extends Controller
             
             $img->save();
             
-            $future->images()->attach($image->id);
+            $future->images()->attach($img->id);
         }
     }
         $register_time = new Carbon($request->input('year'));
