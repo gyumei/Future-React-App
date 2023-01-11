@@ -27,12 +27,13 @@ const Followed_display = (props) => {
                         } else {
                            return (
                             <div className="follow-title-box">
-                                <div className="follow-box-name"><p>あなのフォロワーの一覧です</p></div>
+                                <div className="follow-box-name"><p>あなのフォロワーの一覧です</p>
                                 { follows.map((follow) => (
                                 　　<div key={follow.id}>
                                         <div className="follow_name"><p><Link href={`/future/otherpage/${follow.id}`}>{ follow.name }</Link></p></div>
                                     </div>
                                 )) }
+                                </div>
                             </div>
                          )
                         }
