@@ -59,7 +59,7 @@ class CreateController extends Controller
         $images = $request->file('images');
         
         if(is_null($images)){
-             dd($image);
+             dd($images);
         }else{
         foreach ($images as $image){
             //ファイル名の取得
