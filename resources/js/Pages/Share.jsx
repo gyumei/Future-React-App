@@ -13,7 +13,8 @@ const { futures } = props;
 const now = moment()
 
 return (
-            <body>
+        
+        <body>
             {
                 (
                    ()=> {
@@ -23,7 +24,7 @@ return (
                         return (
                         <div className="content-index">
                             <div className="post-list">
-                                { futures.data.map((future) => (
+                                { futures.map((future) => (
                                     <>
                                         <div key={future.id}>
                                             { moment(future.year).isAfter(now) ? (
