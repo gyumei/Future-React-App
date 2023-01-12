@@ -12,7 +12,7 @@ class GoogleLoginController extends Controller
 {
     public function getGoogleAuth()
     {
-        return Socialite::driver('google')->scopes(['https://www.googleapis.com/auth/calendar.events'])->redirect();
+        return Socialite::driver('google')->redirect();
     }
 
     public function handleGoogleCallback()
