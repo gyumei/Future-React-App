@@ -118,6 +118,7 @@ class CreateController extends Controller
     //クライアントの取得
     private function getClient()
     {
+        $client = new Google_Client();
         
         return $client;
     }
