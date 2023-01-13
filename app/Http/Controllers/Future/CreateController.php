@@ -97,7 +97,9 @@ class CreateController extends Controller
             $me = auth()->id();
             $user = User::where('id', '=', $me)->first();
             $user_email = $user->email;
-            $calendarId = $user_email;
+            //$calendarId = $user_email;
+            $calendarId = env('GOOGLE_CALENDAR_ID');
+            dd($calendarId);
             $event = new Google_Service_Calendar_Event(array(
             //タイトル
             'summary' => $request->input('title'),
@@ -113,7 +115,7 @@ class CreateController extends Controller
             ),
         ));
 
-        $event = $service->events->insert("$calendarId", $event);
+        $event = $service->events->insert($calendarId, $event);
         }
         return redirect()->route('future.index');
     }
