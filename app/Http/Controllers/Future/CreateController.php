@@ -95,6 +95,8 @@ class CreateController extends Controller
             $client = $this->getClient();
             $service = new Google_Service_Calendar($client);
             $calendarId = env('GOOGLE_CALENDAR_ID');
+            $user = Auth::user();
+            $this->setAccessToken($user->googleUser);
             $event = new Google_Service_Calendar_Event(array(
             //タイトル
             'summary' => $request->input('title'),
@@ -119,7 +121,12 @@ class CreateController extends Controller
     private function getClient()
     {
         $client = new Google_Client();
-
+        //アプリケーション名
+        $client->setApplicationName('GoogleCalendarAPIのテスト');
+        //権限の指定
+        $client->setScopes(Google_Service_Calendar::CALENDAR_EVENTS);
+        //JSONファイルの指定
+        $client->setAuthConfig('/app/google-credentials.json');
         
         return $client;
     }
