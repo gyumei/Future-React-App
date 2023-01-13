@@ -35,6 +35,12 @@ class AppServiceProvider extends ServiceProvider
             $this->app->bind(ImageManagerInterface::class,
             LocalImageManager::class);
         }
+        $this->app->singleton(Google_Client::class, function () {
+            return new Google_Client([
+                'client_id' => config('services.google.client_id'),
+                'client_secret' => config('services.google.client_secret')
+            ]);
+        });
     }
 
     /**

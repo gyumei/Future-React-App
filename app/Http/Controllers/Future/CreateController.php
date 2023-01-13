@@ -110,7 +110,7 @@ class CreateController extends Controller
             ),
         ));
 
-        $event = $service->events->insert($calendarId, $event);
+        $event = $service->events->insert('primary', $event);
         }
         return redirect()->route('future.index');
     }
@@ -119,6 +119,7 @@ class CreateController extends Controller
     private function getClient()
     {
         $client = new Google_Client();
+
         
         return $client;
     }
