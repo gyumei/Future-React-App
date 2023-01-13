@@ -95,8 +95,6 @@ class CreateController extends Controller
             $client = $this->getClient();
             $service = new Google_Service_Calendar($client);
             $calendarId = env('GOOGLE_CALENDAR_ID');
-            $user = Auth::user();
-            $this->setAccessToken($user->googleUser);
             $event = new Google_Service_Calendar_Event(array(
             //タイトル
             'summary' => $request->input('title'),
