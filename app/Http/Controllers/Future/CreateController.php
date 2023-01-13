@@ -113,7 +113,7 @@ class CreateController extends Controller
             ),
         ));
 
-        $event = $service->events->insert($calendarId, $event);
+        $event = $service->events->insert("$calendarId", $event);
         }
         return redirect()->route('future.index');
     }
