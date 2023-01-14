@@ -8,11 +8,11 @@
 
 ## background
 
--<p>①亡くなった自分の親族が現在の自分に何を伝えたかったのかを知りたくなったから。<p>.
--<p>②亡くなった人の写真や記憶が日に日に亡くなっていることに気づいた。<p>.
--<p>③自分がいつ死んでも大切な親族に普段は自分が親族や友達に言えないことを残しておけるから<p>.
+- <p>①亡くなった自分の親族が現在の自分に何を伝えたかったのかを知りたくなったから。<p>
+- <p>②亡くなった人の写真や記憶が日に日に亡くなっていることに気づいた。<p>
+- <p>③自分がいつ死んでも大切な親族に普段は自分が親族や友達に言えないことを残しておけるから<p>
 
-<p>このような背景からこのアプリの制作を思いつきました。</p>.
+<p>このような背景からこのアプリの制作を思いつきました。</p>
 
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
