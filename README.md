@@ -1,10 +1,10 @@
 ## Future-React App
 
 実際に運営しているサイトのURLになります。
-<a href="https://future-react-app.herokuapp.com/future"></a>
+<a href="https://future-react-app.herokuapp.com/future">https://future-react-app.herokuapp.com/future</a>
 
 ソースコードは以下のURLになります。
-
+<a href="https://github.com/gyumei/Future-React-App">https://github.com/gyumei/Future-React-App</a>
 
 
 
