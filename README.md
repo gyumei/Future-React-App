@@ -20,8 +20,9 @@
 使用技術はHTML+CSS+React,PHP,DBはMySQLです。
 これまではheroku上での展開しております。</p>
 
-###パソコンからの表示###
+###画面の表示###
 <img width="1673" alt="Screen Shot 2023-01-14 at 15 16 29" src="https://user-images.githubusercontent.com/88586058/212458781-586f6220-986d-479e-91b8-06ee8d4ea9fe.png">
+
 
 
 
