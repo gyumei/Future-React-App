@@ -148,6 +148,7 @@ const Future_register = (props) => {
                         <legend>Google Calendarにこの投稿を登録する場合はここにチェックをつけてください</legend>
                         <div>
                             <input type="checkbox" id="scales" onChange={(e) => setData("google", e.target.value)}/>
+                            <button onclick="location.href='https://www.google.com/calendar/render?action=TEMPLATE">サンプル</button>
                         </div>
                     </fieldset>
                 </div>
