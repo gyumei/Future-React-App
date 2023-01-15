@@ -150,8 +150,8 @@ const Future_register = (props) => {
                             <input type="checkbox" id="scales" onChange={(e) => setData("google", e.target.value)}/>
                         </div>
                     </fieldset>
+                    <p>Google Calendarに登録したい場合はここを押してください。 <a href="https://www.google.com/calendar/render?action=TEMPLATE" target="_blank" rel="noopener noreferrer">Check</a>.</p>
                 </div>
-                <p>Check out <a href="https://www.google.com/calendar/render?action=TEMPLATE" target="_blank" rel="noopener noreferrer">freeCodeCamp</a>.</p>
                  <button type="submit" className="button btn btn-warning" id="submit_button">提出</button>
             </form>
             <div className="back-to-index">
