@@ -19,7 +19,7 @@
 ## 遷移図
 <img width="1292" alt="Screen Shot 2023-01-16 at 16 09 25" src="https://user-images.githubusercontent.com/88586058/212618188-37114de8-0ea3-4047-9a44-688fe8e6626e.png">
 
-##環境変数
+## 環境変数
 <p>Cloudinaryを設定しましたので、こちらの変数設定が必須となります。</p>
 <img width="350" alt="Screen Shot 2023-01-16 at 16 10 44" src="https://user-images.githubusercontent.com/88586058/212618388-e4614924-0327-4414-b6ab-c23cb59bc021.png">
 
