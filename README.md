@@ -46,4 +46,3 @@
 
 ## Next Works
 - <p>bootstrapの適用</p>
-- <p>Google calendarとのAPI連携</p>
