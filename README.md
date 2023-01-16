@@ -22,7 +22,7 @@
 <p>Cloudinaryを設定しましたので、こちらの変数設定が必須となります。</p>
 <img width="350" alt="Screen Shot 2023-01-16 at 16 10 44" src="https://user-images.githubusercontent.com/88586058/212618388-e4614924-0327-4414-b6ab-c23cb59bc021.png">
 
-<p>Google Loginを設定するにあたってこれらの環境変数の設定が必須となる
+<p>Google Loginを設定するにあたってこれらの環境変数の設定が必須となる</p>
 <img width="351" alt="Screen Shot 2023-01-16 at 16 11 58" src="https://user-images.githubusercontent.com/88586058/212618561-edd1f174-05da-4cfd-be46-9a56eeb9460f.png">
 
 
