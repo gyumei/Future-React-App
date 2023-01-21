@@ -64,7 +64,7 @@ const Index = (props) => {
         <div class="hero__inner">
           <ul class="hero-slide">
             <li class="hero-slide__item">
-              <img class="hero-slide__img" src="{{ asset('/storage/images/living.jpg') }}" alt="" />
+              <img class="hero-slide__img" src="{{ asset('./../../../storage/app/public/images/living.jpg') }}" alt="" />
             </li>
             <li class="hero-slide__item">
               <img class="hero-slide__img" src="img/index-hero02.jpg" alt="" />
