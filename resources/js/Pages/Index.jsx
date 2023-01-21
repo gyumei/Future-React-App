@@ -59,9 +59,9 @@ const Index = (props) => {
                 {/* タイトルの */}
                 <div className="title-index">memories to the future</div>
                 <div class="img-frame">
-                    <div class="img-01"></div>
-                    <div class="img-02"></div>
-                    <div class="img-03"></div>
+                    <div class="img-01"><img src={ "storage/images/living.jpg" } width="500px" height="300px"/></div>
+                    <div class="img-02"><img src={ "storage/images/living.jpg" } width="500px" height="300px"/></div>
+                    <div class="img-03"><img src={ "storage/images/living.jpg" } width="500px" height="300px"/></div>
                 </div>
                 
                 <div className="user-form">  

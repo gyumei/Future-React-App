@@ -201,11 +201,11 @@
    animation: slide-animation-01 24s infinite;
 }
 .img-02{
-   background-image: url('画像の場所');
+   background-image: url('storage/images/living.jpg');
    animation: slide-animation-02 24s infinite;
 }
 .img-03{
-   background-image: url('画像の場所');
+   background-image: url('storage/images/living.jpg');
    animation: slide-animation-03 24s infinite;
 }
 @keyframes slide-animation-01 {
