@@ -33,6 +33,7 @@ const Future_register = (props) => {
     
     const handleChange = (e) => {
   //checkedItemsのstateをセット
+      console.log(e.target.checked)
       setCheckedItems({
         ...checkedItems,
         [e.target.id]: e.target.checked
