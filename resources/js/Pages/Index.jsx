@@ -58,11 +58,27 @@ const Index = (props) => {
                 </div>
                 {/* タイトルの */}
                 <div className="title-index">memories to the future</div>
-                <div class="img-frame">
-                    <div class="img-01"><img src={ "/storage/images/living.jpg" } width="500px" height="300px"/>赤坂テラス</div>
-                    <div class="img-02"><img src={ "storage/images/living.jpg" } width="500px" height="300px"/></div>
-                    <div class="img-03"><img src={ "storage/images/living.jpg" } width="500px" height="300px"/></div>
-                </div>
+
+    <div class="wrapper">
+      <div class="hero">
+        <div class="hero__inner">
+          <ul class="hero-slide">
+            <li class="hero-slide__item">
+              <img class="hero-slide__img" src="{{ asset('storage/images/living.jpg') }}" alt="" />
+            </li>
+            <li class="hero-slide__item">
+              <img class="hero-slide__img" src="img/index-hero02.jpg" alt="" />
+            </li>
+            <li class="hero-slide__item">
+              <img class="hero-slide__img" src="img/index-hero03.jpg" alt="" />
+            </li>
+          </ul>
+          <div class="hero__heading">
+            <div class="hero__title">SLIDESHOW ANIMATION</div>
+          </div>
+        </div>
+      </div>
+    </div>
                 <div className="user-form"> 
                     <form onSubmit={handleSendPosts}>
                         <div>
