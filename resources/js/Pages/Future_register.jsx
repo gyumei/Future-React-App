@@ -127,7 +127,7 @@ const Future_register = (props) => {
                     <div id="target">
                             <label class="upload-label">
                                 ファイルを選択
-                                <input type="file" ref={inputRef} id="fileBox" accept="image/*" multiple onChange={(e) => setData("images", e.target.files)} onChange={onFileInputChange}/>
+                                <input type="file" ref={inputRef} id="fileBox" accept="image/*" multiple onChange={(e) => setData("images", e.target.files)} />
                                 <span className="text-red-600">{props.errors.images}</span>
                             </label>
                         <button onClick={resetFile}>リセット</button>
