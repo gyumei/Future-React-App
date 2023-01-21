@@ -51,8 +51,9 @@ const Future_register = (props) => {
     const inputRef = useRef(null);
 
     const onFileInputChange = (e) => {
-
-    setFiles([...files, ...e.target.files]);
+        const hensu = e.target.files
+        setData("images", hensu)
+        setFiles([...files, ...e.target.files]);
     e.target.value = "";
     };
 
@@ -127,7 +128,7 @@ const Future_register = (props) => {
                     <div id="target">
                             <label class="upload-label">
                                 ファイルを選択
-                                <input type="file" ref={inputRef} id="fileBox" accept="image/*" multiple onChange={(e) => setData("images", e.target.files)} />
+                                <input type="file" ref={inputRef} id="fileBox" accept="image/*" multiple  onChange={onFileInputChange}/>
                                 <span className="text-red-600">{props.errors.images}</span>
                             </label>
                         <button onClick={resetFile}>リセット</button>
