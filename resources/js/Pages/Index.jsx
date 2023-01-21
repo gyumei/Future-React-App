@@ -64,7 +64,7 @@ const Index = (props) => {
         <div class="hero__inner">
           <ul class="hero-slide">
             <li class="hero-slide__item">
-              <img class="hero-slide__img" src={ "/sunset.jpg" } width="500px" height="300px"/>
+              <img class="hero-slide__img" src={ "./sunset.jpg" } width="500px" height="300px"/>
             </li>
             <li class="hero-slide__item">
               <img class="hero-slide__img" src="img/index-hero02.jpg" alt="" />
