@@ -59,7 +59,7 @@ const Index = (props) => {
                 {/* タイトルの */}
                 <div className="title-index">memories to the future</div>
                 <div class="img-frame">
-                    <div class="img-01"><img src={ "storage/images/living.jpg" } width="500px" height="300px"/></div>
+                    <div class="img-01"><img src={ "/home/ec2-user/environment/future/storage/app/public/images/living.jpg" } width="500px" height="300px"/>赤坂テラス</div>
                     <div class="img-02"><img src={ "storage/images/living.jpg" } width="500px" height="300px"/></div>
                     <div class="img-03"><img src={ "storage/images/living.jpg" } width="500px" height="300px"/></div>
                 </div>
