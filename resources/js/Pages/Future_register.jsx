@@ -51,6 +51,7 @@ const Future_register = (props) => {
     const inputRef = useRef(null);
 
     const onFileInputChange = (e) => {
+    setData("images", e.target.files)
 
     setFiles([...files, ...e.target.files]);
     e.target.value = "";
@@ -127,7 +128,7 @@ const Future_register = (props) => {
                     <div id="target">
                             <label class="upload-label">
                                 ファイルを選択
-                                <input type="file" ref={inputRef} id="fileBox" accept="image/*,video/mp4" multiple onChange={(e) => setData("images", e.target.files)}/>
+                                <input type="file" ref={inputRef} id="fileBox" accept="image/*" multiple onChange={onFileInputChange}/>
                                 <span className="text-red-600">{props.errors.images}</span>
                             </label>
                         <button onClick={resetFile}>リセット</button>
@@ -144,12 +145,6 @@ const Future_register = (props) => {
                 </div>
       
                 <div className="checkbox">
-                    <fieldset>
-                        <legend>Google Calendarにこの投稿を登録する場合はここにチェックをつけてください</legend>
-                        <div>
-                            <input type="checkbox" id="scales" onChange={(e) => setData("google", e.target.value)}/>
-                        </div>
-                    </fieldset>
                     <p>Google Calendarに登録したい場合はここを押してください。 <a href="https://www.google.com/calendar/render?action=TEMPLATE" target="_blank" rel="noopener noreferrer">Check</a>.</p>
                 </div>
                  <button type="submit" className="button btn btn-warning" id="submit_button">提出</button>

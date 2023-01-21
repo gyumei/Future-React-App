@@ -15,6 +15,7 @@ const now = moment()
 return (
         
         <body>
+        <p>あなたに向けて共有されたタイムカプセルです</p>
             {
                 (
                    ()=> {
