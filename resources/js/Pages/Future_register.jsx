@@ -52,7 +52,7 @@ const Future_register = (props) => {
 
     const onFileInputChange = (e) => {
     setData("images", e.target.files)
-
+    console.log(data.images)
     setFiles([...files, ...e.target.files]);
     e.target.value = "";
     };
