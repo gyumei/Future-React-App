@@ -36,3 +36,12 @@
 .sample_box_title p {
     margin-bottom: 0;
 }
+.box-title {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px #4ec4d3;
+}
+.box-title p {
+    margin: 0; 
+    padding: 0;
+}
