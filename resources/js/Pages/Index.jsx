@@ -59,7 +59,7 @@ const Index = (props) => {
                 {/* タイトルの */}
                 <div className="title-index">memories to the future</div>
 
-    <div class="wrapper">
+    {/*<div class="wrapper">
       <div class="hero">
         <div class="hero__inner">
           <ul class="hero-slide">
@@ -79,6 +79,7 @@ const Index = (props) => {
         </div>
       </div>
     </div>
+    */}
                 <div className="user-form"> 
                     <form onSubmit={handleSendPosts}>
                         <div>
