@@ -10,6 +10,7 @@
 <p>php: version 8.0.2</p>
 <p>laravel: version 9.19</p>
 <p>react: version 18.2</p>
+<p>MySQL: version 8.0.23</p>
 
 ## E-R図
 <img width="860" alt="Screen Shot 2023-01-16 at 16 07 27" src="https://user-images.githubusercontent.com/88586058/212617910-72542fc5-75b5-4ea0-9b87-9bcc65b50135.png">
