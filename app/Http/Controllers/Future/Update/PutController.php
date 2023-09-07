@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\services\FutureService;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Inertia\Inertia;
+use App\Http\Requests\Future\UpdateRequest;
 
 class PutController extends Controller
 {
@@ -18,7 +19,7 @@ class PutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request, int $id)
+    public function __invoke(UpdateRequest $request, int $id)
     {
         $profile_id = $id; 
         $me = auth()->id();

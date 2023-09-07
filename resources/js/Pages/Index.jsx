@@ -3,29 +3,30 @@ import { Inertia } from "@inertiajs/inertia";
 import { Link, useForm, useState } from '@inertiajs/inertia-react';
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import './css/Index.css';
+import './css/All.css';
 import moment from 'moment'
 
 const Index = (props) => {
     const { futures } = props;
     const { me } = props;
+    {/* form登録searchの設定 */}
     const {data, setData, post} = useForm({
         search: "",
     });
+    {/* post設定 */}
     const handleSendPosts = (e) => {
         e.preventDefault();
         post("/future/search");
     }
-    const numbers = Number(futures.links.length);
     
+    const numbers = Number(futures.links.length);
+    {/* 現在時刻の取得 */}
     const now = moment()
 
     return (
         <html>
-        <head>
-            <meta name="csrf-token" content="{{ csrf_token() }}"/>
-        </head>
             <body>
-                <div className="flex justify-center" id="first_header">
+                <div className="first_header">
                     <nav className="header01-nav">
                         <h1 className="header01-logo">タイムカプセル</h1>
                         {props.auth.user ? (
@@ -55,53 +56,81 @@ const Index = (props) => {
                             
                     </nav>
                 </div>
-                <div className="title">memories to the future</div>
-                <div className="form">  
+                {/* タイトルの */}
+                <div className="title-index">memories to the future</div>
+
+    {/*<div class="wrapper">
+      <div class="hero">
+        <div class="hero__inner">
+          <ul class="hero-slide">
+            <li class="hero-slide__item">
+              <img class="hero-slide__img" src="../sunset.jpg"  width="500px" height="300px"/>
+            </li>
+            <li class="hero-slide__item">
+              <img class="hero-slide__img" src="img/index-hero02.jpg" alt="" />
+            </li>
+            <li class="hero-slide__item">
+              <img class="hero-slide__img" src="img/index-hero03.jpg" alt="" />
+            </li>
+          </ul>
+          <div class="hero__heading">
+            <div class="hero__title">SLIDESHOW ANIMATION</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    */}
+                <div className="user-form"> 
                     <form onSubmit={handleSendPosts}>
                         <div>
                             <h2>ユーザ検索</h2>
                             <input type="text" placeholder="検索" onChange={(e) => setData("search", e.target.value)}/>
                             <button className="mt-2 text-sm hover:text-gray-800" type="submit">検索</button>
+                            <span className="text-red-600">{props.errors.search}</span>
                         </div>
                     </form>
                 </div>
                 
-                <div className="content">
-                    <div className="box5">
+                <div className="content-index">
+                    <div className="post-list">
                         { futures.data.map((future) => (
                         <>
                         <div key={future.id}>
                             { moment(future.year).isAfter(now) ? (
                             <div className="sample_box_title">
-                                <div className="theme">個人のタイムカプセル</div>
+                                <div>個人のタイムカプセル</div>
                                 <p className="data_text">{ future.username }さんが{ future.year }に向けて投稿した思い出です。</p>
                             </div>
                             ):(
                             <div className="sample_box_title">
-                                <div className="data_text">
-                                    <Link href={`/future/ownpage/${future.id}`} >タイムカプセル</Link>
-                                </div>
+                                <Link href={`/future/ownpage/${future.id}`} >タイムカプセル</Link>
                                 <p>{ future.username }さんが{ future.year }に向けて投稿した思い出です。</p>
                             </div>
                             )
                             }
                         </div>
-                        </>
-                        )
-                        )
-                        }
+                        </> 
+                        ))}
                     </div>
                 </div>
-                <div class='paginate'>
-                <p>{console.log(futures.links)}</p>
+                <div className='paginate'>
                 { futures.links.map((links) => (
-                        <>
-                        <div class="box1">
-                        <p><Link href={`/future?page=${Number(links.label)}`} >{ links.label }</Link></p>
-                        </div>
+                    <>
+                    {
+                    (()=> {
+                        {/* 最初と最後に出てくる不要な文字の削除 */}
+                        if(links.label == "&laquo; Previous" || links.label == "Next &raquo;") {
+                        }
+                        else {
+                        {/* リンクラベルの描画 */}
+                        return (
+                            <div className="paginate-link">
+                                <p><Link href={`/future?page=${Number(links.label)}`} >{ links.label }</Link></p>
+                            </div>
+                         )}})()}
                         </>
                         )
-                    )
+                      )
                     }
                 </div>
             </body>

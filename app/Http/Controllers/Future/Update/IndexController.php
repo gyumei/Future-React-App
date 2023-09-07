@@ -8,6 +8,7 @@ use App\Models\Profile;
 use App\Models\User;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Inertia\Inertia;
+use App\Http\Requests\Future\SettingRequest;
 
 class IndexController extends Controller
 {
@@ -17,7 +18,7 @@ class IndexController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request, int $id)
+    public function __invoke(SettingRequest $request, int $id)
     {
         $profile_id = $id; 
         $me = auth()->id();

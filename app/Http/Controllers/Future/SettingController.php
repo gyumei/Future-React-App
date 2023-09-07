@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Profile;
 use App\Models\User;
 use Inertia\Inertia;
+use App\Http\Requests\Future\SettingRequest;
 
 class SettingController extends Controller
 {
@@ -16,7 +17,7 @@ class SettingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request, int $id)
+    public function __invoke(SettingRequest $request, int $id)
     {
         $me = $id;
         $mypage = User::where('id', '=', $me)->first();

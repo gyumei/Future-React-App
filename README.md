@@ -1,66 +1,49 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Future-React App
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+実際に運営しているサイトのURLになります。
+- <a href="https://future-react-app.herokuapp.com/future">https://future-react-app.herokuapp.com/future</a>.
 
-## About Laravel
+ソースコードは以下のURLになります。
+- <a href="https://github.com/gyumei/Future-React-App">https://github.com/gyumei/Future-React-App</a>.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Version
+<p>php: version 8.0.2</p>
+<p>laravel: version 9.19</p>
+<p>react: version 18.2</p>
+<p>MySQL: version 8.0.23</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## E-R図
+<img width="860" alt="Screen Shot 2023-01-16 at 16 07 27" src="https://user-images.githubusercontent.com/88586058/212617910-72542fc5-75b5-4ea0-9b87-9bcc65b50135.png">
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<p>ここではpostと書かれている変数はfutureと言う変数に置き換えられています。
+    
+## 遷移図
+<img width="1292" alt="Screen Shot 2023-01-16 at 16 09 25" src="https://user-images.githubusercontent.com/88586058/212618188-37114de8-0ea3-4047-9a44-688fe8e6626e.png">
 
-## Learning Laravel
+## 環境変数
+<p>Cloudinaryを設定しましたので、こちらの変数設定が必須となります。</p>
+<img width="350" alt="Screen Shot 2023-01-16 at 16 10 44" src="https://user-images.githubusercontent.com/88586058/212618388-e4614924-0327-4414-b6ab-c23cb59bc021.png">
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<p>Google Loginを設定するにあたってこれらの環境変数の設定が必須となる</p>
+<img width="351" alt="Screen Shot 2023-01-16 at 16 11 58" src="https://user-images.githubusercontent.com/88586058/212618561-edd1f174-05da-4cfd-be46-9a56eeb9460f.png">
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Background
+<P>最近、ニュースで韓国での人混みによる圧迫死事件や突然の有名人の逝去を見て、人は突然亡くなるんだなと感じることがあると思います。それを背景として人の思いを大切にしたいなという思いで以下の３点を満たすようなアプリケーションの構想を思い立ち、アプリケーションを制作することとしました。</p>
 
-## Laravel Sponsors
+- <p>①亡くなった自分の親族が現在の自分に何を伝えたかったのかを知れる。<p>
+- <p>②亡くなった人の写真や記憶が日に日に無くなっている。<p>
+- <p>③自分がいつ死んでも大切な親族に普段は自分が親族や友達に言えないことを残せる<p>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+<p>このような背景からこのアプリの制作を思いつきました。</p>
 
-### Premium Partners
+## About
+<p>本ウェブアプリは、一定のテキストと画像と日付を設定しその日付になるとそのテキストや画像が自分もしくは自分の届けたいと思う人に届けることができます。
+使用技術はHTML+CSS+React,PHP,DBはMySQLです。
+これまではheroku上での展開しております。</p>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+###画面の表示###
+<img width="1673" alt="Screen Shot 2023-01-14 at 15 16 29" src="https://user-images.githubusercontent.com/88586058/212458781-586f6220-986d-479e-91b8-06ee8d4ea9fe.png">
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Next Works
+- <p>ant designの適用</p>

@@ -196,6 +196,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         
         Laravel\Socialite\SocialiteServiceProvider::class, // 'providers' 内に追記
+        CloudinaryLabs\CloudinaryLaravel\CloudinaryServiceProvider::class,
     ],
 
     /*

@@ -1,17 +1,22 @@
-.header0{
-    text-align:center;
-    font-size:30px;
-    font-weight:bolder;
-    margin-top:100px;
+.post-list {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    gap:10px;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 10px #696969;
+    width:100%;
+    background-color:#fff2e4;;
 }
-.paginate{
-    text-align:center;
-    display:inline;
-    writing-mode: horizontal-tb;
+.post-list p {
+    margin: 0; 
+    padding: 0;
+    height: 100px;
 }
-    .sample_box_title { 
+.sample_box_title { 
     margin:0 auto;
-    padding: 0.5em 0.5em 0.4em;
+    padding: 4.0em 0.5em 0.4em;
     text-align: center;
     font-size: 1.3em;/*タイトル文字サイズ*/
     background: #FFCC33	;/*タイトル文字背景色*/
@@ -31,58 +36,15 @@
 .sample_box_title p {
     margin-bottom: 0;
 }
-.box5 {
-    display:flex;
-    flex-wrap:wrap;
-    float:left;
-    justify-content: space-between;
-    gap:10px;
+.box-title {
     padding: 0.5em 1em;
-    border: double 10px #696969;
-    width:100%;
+    margin: 2em 0;
+    border: double 5px #4ec4d3;
+    width:30%;
+    background: white;
+    margin-left:35%;
 }
-.box5 p {
+.box-title p {
     margin: 0; 
     padding: 0;
-    height: 100px;
-}
-.button019 a {
-    background: #eee;
-    border-radius: 3px;
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 280px;
-    padding: 10px 25px;
-    color: #313131;
-    transition: 0.3s ease-in-out;
-    font-weight: 500;
-    left:600px;
-    text-decoration:none;
-}
-.button019 a:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  bottom: 0;
-  right: 2rem;
-  font-size: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: right 0.3s;
-  width: 6px;
-  height: 6px;
-  border-top: solid 2px currentColor;
-  border-right: solid 2px currentColor;
-  transform: translateY(-50%) rotate(45deg);
-}
-.button019 a:hover {
-  background: #6bb6ff;
-  color: #FFF;
-}
-.button019 a:hover:after {
-  right: 1.4rem;
 }

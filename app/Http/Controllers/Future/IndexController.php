@@ -10,7 +10,6 @@ use App\Models\Follow;
 use App\Models\Share;
 use Illuminate\Http\Request;
 use App\Services\FutureService;
-use App\Http\Requests\Future\CreateRequest;
 use Inertia\Inertia;
 
 class IndexController extends Controller
@@ -26,8 +25,8 @@ class IndexController extends Controller
     {
         $me = auth()->id();
         $limit_count = 4;
-        $future = Future::orderBy('created_at', 'DESC')->where('user_id', '=', $me)->paginate($limit_count);
-        return Inertia::render("Index",["futures" => $future, 'me'=>$me]);
+        $futures = Future::orderBy('created_at', 'DESC')->where('user_id', '=', $me)->paginate($limit_count);
+        return Inertia::render("Index",["futures" => $futures, 'me'=>$me]);
     }
 
     //選択された投稿を返す
@@ -52,7 +51,7 @@ class IndexController extends Controller
             return Inertia::render("Mypage",['me'=>$me, 'mypage' => $mypage, 'profiles' => $profiles_one]);
         }
     }
-
+    //他人のマイページを返す
     public function otherpage($id)
     {
         $other = $id;
@@ -130,13 +129,15 @@ class IndexController extends Controller
         return Inertia::render("Followed_display",['follows'=>$followed]);
         }
     }
-
+    
+    //初めてマイページのプロフォールを設定するとき
     public function first_setting($id)
     {
         $my_id = $id;
         return Inertia::render("Setting",['my_id'=>$my_id]);
     }
-
+    
+    //post画面への移動を表している
     public function register()
     {
         $me = auth()->id();

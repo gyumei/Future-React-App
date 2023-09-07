@@ -8,6 +8,7 @@ const Setting = (props) => {
     
     const { my_id } = props;
     
+    {/* フォームの登録 */}
     const {data, setData, post} = useForm({
         setting: "",
     })
@@ -18,16 +19,22 @@ const Setting = (props) => {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSendPosts}>
-                <label for="search">プロフィール設定</label>
-                <textarea  onChange={(e) => setData("setting", e.target.value)}></textarea>
-                <button type="submit" className="p-1 bg-purple-300 hover:bg-purple-400 rounded-md">設定</button>
-            </form>
-            <div className="button019">
-	           <Link href={`/future`}>戻る</Link>
-	        </div>
-        </div>
+        <body>
+            <div className="update-all">
+                <div className="update-profile">
+                    <form onSubmit={handleSendPosts}>
+                        <label for="search">プロフィール設定</label>
+                        <input type="text" size="20" onChange={(e) => setData("setting", e.target.value)}/>
+                        <span className="text-red-600">{props.errors.profile}</span>
+                        <button type="submit" className="p-1 bg-red-300 hover:bg-purple-400 rounded-md">send</button>
+                    </form>
+                </div>
+
+                <div className="back-to-former">
+	               <Link href={`/future/mypage/${my_id}`}>戻る</Link>
+	             </div>
+            </div>
+        </body>
         );
 }
 

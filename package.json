@@ -1,6 +1,7 @@
 {
     "private": true,
     "scripts": {
+        "heroku-postbuild": "npm run build",
         "dev": "vite",
         "build": "vite build"
     },
